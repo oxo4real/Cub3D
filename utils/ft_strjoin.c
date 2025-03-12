@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/12 16:43:33 by mhayyoun         ###   ########.fr       */
+/*   Created: 2025/03/12 16:54:09 by mhayyoun          #+#    #+#             */
+/*   Updated: 2025/03/12 16:54:25 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "utils.h"
 
-int	main(int ac, char *av[])
+char	*ft_strjoin(char *s1, char *s2)
 {
-	(void)av;
-	if (ac != 2)
-	{
-		printf("Usage: %s <map>.cub\n", av[0]);
-		return (1);
-	}
-	if (parser(av[1]))
-		return (1);
-	return (0);
+	size_t	len1;
+	size_t	len2;
+	char	*new;
+
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	new = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!new)
+		return (NULL);
+	ft_memcpy(new, s1, len1);
+	ft_memcpy(new + len1, s2, len2);
+	new[len1 + len2] = '\0';
+	return (new);
 }

@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/12 16:43:33 by mhayyoun         ###   ########.fr       */
+/*   Created: 2025/03/12 16:53:16 by mhayyoun          #+#    #+#             */
+/*   Updated: 2025/03/12 16:53:25 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "utils.h"
 
-int	main(int ac, char *av[])
+size_t	ft_strlen(const char *s)
 {
-	(void)av;
-	if (ac != 2)
-	{
-		printf("Usage: %s <map>.cub\n", av[0]);
-		return (1);
-	}
-	if (parser(av[1]))
-		return (1);
-	return (0);
+	size_t	len;
+
+	len = 0;
+	while (s && ((const unsigned char *)s)[len] != '\0')
+		len++;
+	return (len);
 }

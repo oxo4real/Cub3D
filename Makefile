@@ -4,7 +4,7 @@ SRCS = main.c
 
 SRCS += parser/get_next_line.c parser/get_next_line_utils.c parser/parser.c
 
-SRCS += utils/ft_calloc.c utils/ft_memcpy.c
+SRCS += utils/ft_calloc.c utils/ft_memcpy.c utils/ft_split.c utils/ft_strjoin.c utils/ft_strlen.c
 
 BUILD = build
 OBJS = $(patsubst %.c, $(BUILD)/%.o, $(SRCS))
