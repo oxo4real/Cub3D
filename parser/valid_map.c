@@ -6,7 +6,7 @@
 /*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 19:27:22 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/12 22:26:51 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/12 22:30:57 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ bool	ft_check_walls(char **map, int map_height)
 					|| j > (ft_strlen(map[i + 1]) - 1))
 				&& map[i][j] != '1' && map[i][j] != ' ')
 				return (false);
-			if (map[i][j] == ' ' && !check_space_surroundings(map, i, j))
+			if (!(j > (ft_strlen(map[i - 1]) - 1)
+					|| j > (ft_strlen(map[i + 1]) - 1))
+				&& map[i][j] == ' ' && !check_space_surroundings(map, i, j))
 				return (false);
 		}
 	}
