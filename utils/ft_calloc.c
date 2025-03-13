@@ -6,20 +6,11 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 21:43:09 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/12 16:55:12 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:10:15 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-
-void	ft_bzero(void *s, size_t n)
-{
-	unsigned char	*ptr;
-
-	ptr = s;
-	while (n--)
-		*ptr++ = 0;
-}
 
 void	*ft_calloc(size_t count, size_t size)
 {

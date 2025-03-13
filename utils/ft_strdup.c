@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/12 20:34:40 by mhayyoun         ###   ########.fr       */
+/*   Created: 2024/07/10 01:33:02 by aaghzal           #+#    #+#             */
+/*   Updated: 2025/03/12 17:57:11 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "utils.h"
 
-void	leaks(void)
+static char	*ft_strcpy(char *dest, const char *src)
 {
-	system("leaks -q cub3d");
+	int	i;
+
+	i = 0;
+	while (src && src[i] != 0)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = 0;
+	return (dest);
 }
 
-int	main(int ac, char *av[])
+char	*ft_strdup(const char *s)
 {
-	atexit(leaks);
-	(void)av;
-	if (ac != 2)
-	{
-		printf("Usage: %s <map>.cub\n", av[0]);
-		return (1);
-	}
-	if (parser(av[1]))
-		return (1);
-	return (0);
+	char	*dup;
+
+	dup = malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (dup == NULL)
+		return (NULL);
+	return (ft_strcpy(dup, s));
 }

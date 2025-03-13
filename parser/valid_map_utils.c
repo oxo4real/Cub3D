@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 19:26:52 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/12 20:36:36 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/13 00:11:45 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include "utils.h"
+#include "parser.h"
 
 int	ft_map_height(char **map)
 {

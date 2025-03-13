@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   has_ext.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/12 20:34:40 by mhayyoun         ###   ########.fr       */
+/*   Created: 2025/03/12 23:35:10 by mhayyoun          #+#    #+#             */
+/*   Updated: 2025/03/12 23:36:03 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-void	leaks(void)
+bool	has_ext(char *filename, char *ext)
 {
-	system("leaks -q cub3d");
-}
+	size_t	len1;
+	size_t	len2;
 
-int	main(int ac, char *av[])
-{
-	atexit(leaks);
-	(void)av;
-	if (ac != 2)
-	{
-		printf("Usage: %s <map>.cub\n", av[0]);
-		return (1);
-	}
-	if (parser(av[1]))
-		return (1);
-	return (0);
+	len1 = ft_strlen(filename);
+	len2 = ft_strlen(ext);
+	if (len1 <= len2)
+		return (0);
+	return (ft_strcmp(&filename[len1 - len2], ext) == 0);
 }

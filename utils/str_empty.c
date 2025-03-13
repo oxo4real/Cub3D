@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   str_empty.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/12 20:34:40 by mhayyoun         ###   ########.fr       */
+/*   Created: 2025/03/13 00:05:35 by mhayyoun          #+#    #+#             */
+/*   Updated: 2025/03/13 00:05:42 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "utils.h"
 
-void	leaks(void)
+bool	str_empty(char *s)
 {
-	system("leaks -q cub3d");
-}
-
-int	main(int ac, char *av[])
-{
-	atexit(leaks);
-	(void)av;
-	if (ac != 2)
+	while (s && *s)
 	{
-		printf("Usage: %s <map>.cub\n", av[0]);
-		return (1);
+		if (!is_space(*s))
+			return (0);
+		s++;
 	}
-	if (parser(av[1]))
-		return (1);
-	return (0);
+	return (1);
 }

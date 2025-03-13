@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strtrim_end.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/12 20:34:40 by mhayyoun         ###   ########.fr       */
+/*   Created: 2025/03/12 23:14:33 by mhayyoun          #+#    #+#             */
+/*   Updated: 2025/03/12 23:21:12 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "utils.h"
 
-void	leaks(void)
+char	*ft_strtrim_end(char *s)
 {
-	system("leaks -q cub3d");
-}
+	size_t	len;
+	size_t	i;
+	char	*new;
 
-int	main(int ac, char *av[])
-{
-	atexit(leaks);
-	(void)av;
-	if (ac != 2)
+	i = 0;
+	len = ft_trimmed_len(s);
+	if (len == 0)
+		return (ft_strdup(""));
+	new = ft_calloc(len + 1, sizeof(char));
+	if (!new)
+		return (NULL);
+	while (i < len)
 	{
-		printf("Usage: %s <map>.cub\n", av[0]);
-		return (1);
+		new[i] = s[i];
+		i++;
 	}
-	if (parser(av[1]))
-		return (1);
-	return (0);
+	return (new);
 }

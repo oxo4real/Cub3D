@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free2darr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/12 20:34:40 by mhayyoun         ###   ########.fr       */
+/*   Created: 2025/02/05 14:42:43 by aaghzal           #+#    #+#             */
+/*   Updated: 2025/02/22 18:36:37 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "utils.h"
 
-void	leaks(void)
+void	freestrarr(char ***arr)
 {
-	system("leaks -q cub3d");
-}
+	int	i;
 
-int	main(int ac, char *av[])
-{
-	atexit(leaks);
-	(void)av;
-	if (ac != 2)
+	i = 0;
+	if (!arr || !(*arr))
+		return ;
+	while ((*arr)[i])
 	{
-		printf("Usage: %s <map>.cub\n", av[0]);
-		return (1);
+		free((*arr)[i]);
+		i++;
 	}
-	if (parser(av[1]))
-		return (1);
-	return (0);
+	free((*arr));
+	(*arr) = NULL;
 }

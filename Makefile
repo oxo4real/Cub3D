@@ -1,16 +1,25 @@
 CC = cc
-CFLAGS = -Werror -Wextra -Wall# -g -fsanitize=address,undefined
+CFLAGS = -Werror -Wextra -Wall -g #-fsanitize=address,undefined
 SRCS = main.c
 
-SRCS += parser/get_next_line.c parser/get_next_line_utils.c parser/parser.c
+SRCS += parser/get_next_line.c parser/get_next_line_utils.c parser/parser.c \
+		parser/valid_map.c parser/valid_map_utils.c parser/match_type.c \
+		parser/free_info.c parser/parser_utils.c parser/has_ext.c
 
-SRCS += utils/ft_calloc.c utils/ft_memcpy.c utils/ft_split.c utils/ft_strjoin.c utils/ft_strlen.c
+
+SRCS += utils/ft_calloc.c utils/ft_memcpy.c utils/ft_split.c utils/ft_strjoin.c \
+		utils/ft_strlen.c utils/ft_memset.c utils/ft_bzero.c utils/ft_strdup.c \
+		utils/free2darr.c utils/is_space.c utils/ft_strjoin_deli.c utils/print_error.c \
+		utils/ft_putchar_fd.c utils/ft_putstr_fd.c utils/ft_putendl_fd.c utils/ft_strcmp.c \
+		utils/ft_strtrim_end.c utils/ft_trimmed_len.c utils/str_empty.c
 
 BUILD = build
 OBJS = $(patsubst %.c, $(BUILD)/%.o, $(SRCS))
 INCS = includes
 HEADERS = $(INCS)/parser.h
 NAME = cub3d
+TOTAL := $(words $(OBJS))
+COUNT := 0
 
 all: $(NAME)
 
@@ -20,7 +29,9 @@ $(NAME): $(OBJS)
 
 $(BUILD)/%.o: %.c $(HEADERS)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -I$(INCS) -c $< -o $@
+	$(call progress)
+	@$(CC) $(CFLAGS) -I$(INCS) -c $< -o $@
+	@printf "\33c\e[3J"
 
 clean:
 	@rm -rf $(BUILD)
@@ -31,3 +42,8 @@ fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
+
+define progress
+        $(eval COUNT=$(shell echo $$(($(COUNT) + 1))))
+        @echo "[ $(COUNT)/$(TOTAL) ] [$(CFLAGS)] Compiling: $<\r"
+endef

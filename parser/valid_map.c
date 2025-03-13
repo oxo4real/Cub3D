@@ -3,30 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 19:27:22 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/12 22:30:57 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/13 00:12:17 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-#include <stdbool.h>
-
-int		ft_map_height(char **map);
-bool	only_ones_and_spaces(char *line);
-bool	ft_check_symbols(char **map);
-bool	ft_check_walls(char **map, int map_height);
-bool	check_extremes(char *line);
-bool	check_space_surroundings(char **map, unsigned int i, unsigned int j);
+#include "parser.h"
 
 bool	valid_map(char **map)
 {
 	int	map_height;
 
 	map_height = ft_map_height(map);
-	if (map_height < 3 || !ft_check_symbols(map)
-		|| !ft_check_walls(map, map_height))
+	if (map_height < 3 || !ft_check_symbols(map) || !ft_check_walls(map,
+			map_height))
 		return (false);
 	return (true);
 }
@@ -47,13 +39,12 @@ bool	ft_check_walls(char **map, int map_height)
 		j = 0;
 		while (map[i][++j + 1])
 		{
-			if ((j > (ft_strlen(map[i - 1]) - 1)
-					|| j > (ft_strlen(map[i + 1]) - 1))
-				&& map[i][j] != '1' && map[i][j] != ' ')
+			if ((j > (ft_strlen(map[i - 1]) - 1) || j > (ft_strlen(map[i + 1])
+						- 1)) && map[i][j] != '1' && map[i][j] != ' ')
 				return (false);
-			if (!(j > (ft_strlen(map[i - 1]) - 1)
-					|| j > (ft_strlen(map[i + 1]) - 1))
-				&& map[i][j] == ' ' && !check_space_surroundings(map, i, j))
+			if (!(j > (ft_strlen(map[i - 1]) - 1) || j > (ft_strlen(map[i + 1])
+						- 1)) && map[i][j] == ' '
+				&& !check_space_surroundings(map, i, j))
 				return (false);
 		}
 	}
@@ -62,9 +53,9 @@ bool	ft_check_walls(char **map, int map_height)
 
 bool	ft_check_symbols(char **map)
 {
-	int		i;
-	int		j;
-	int		nplayer;
+	int	i;
+	int	j;
+	int	nplayer;
 
 	nplayer = 0;
 	i = 0;
@@ -73,11 +64,10 @@ bool	ft_check_symbols(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] == 'N' || map[i][j] == 'E'
-				|| map[i][j] == 'S' || map[i][j] == 'W')
+			if (map[i][j] == 'N' || map[i][j] == 'E' || map[i][j] == 'S'
+				|| map[i][j] == 'W')
 				nplayer++;
-			else if (map[i][j] != '1' && map[i][j] != '0'
-					&& map[i][j] != ' ')
+			else if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' ')
 				return (false);
 			j++;
 		}

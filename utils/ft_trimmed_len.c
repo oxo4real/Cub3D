@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_trimmed_len.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/12 20:34:40 by mhayyoun         ###   ########.fr       */
+/*   Created: 2025/03/12 23:17:20 by mhayyoun          #+#    #+#             */
+/*   Updated: 2025/03/12 23:17:30 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "utils.h"
 
-void	leaks(void)
+size_t	ft_trimmed_len(char const *s)
 {
-	system("leaks -q cub3d");
-}
+	size_t	i;
+	size_t	j;
 
-int	main(int ac, char *av[])
-{
-	atexit(leaks);
-	(void)av;
-	if (ac != 2)
+	i = 0;
+	j = 0;
+	while (s && s[i])
 	{
-		printf("Usage: %s <map>.cub\n", av[0]);
-		return (1);
+		if (is_space(s[i]))
+			j++;
+		else
+			j = 0;
+		i++;
 	}
-	if (parser(av[1]))
-		return (1);
-	return (0);
+	return (i - j);
 }

@@ -6,51 +6,74 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 04:11:01 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/12 15:44:27 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/13 00:08:52 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-int	ft_strcmp(char *s1, char *s2)
+bool	parser_helper(t_info *inf, char *s)
 {
-	while (*s1 == *s2 && *s1 != '\0' && *s2 != '\0')
+	t_type	type;
+	char	**tmp;
+
+	if (str_empty(s))
+		return (0);
+	else
 	{
-		s1++;
-		s2++;
+		tmp = ft_split(s, ' ');
+		if (!tmp)
+			return (raise(MALLOC), 1);
+		type = match_type(tmp[0]);
+		if (type == UNDEFINED)
+			return (freestrarr(&tmp), raise(MALFORMED_FILE), 1);
+		if (inf->data[type])
+			return (freestrarr(&tmp), raise(MALFORMED_FILE), 1);
+		inf->data[type] = ft_strtrim_end(tmp[1]);
+		freestrarr(&tmp);
 	}
-	return (*s1 - *s2);
+	return (0);
 }
 
-bool	has_ext(char *filename, char *ext)
+bool	parse_all(int fd, t_info *inf)
 {
-	size_t	len1;
-	size_t	len2;
+	char	*line;
 
-	len1 = ft_strlen(filename);
-	len2 = ft_strlen(ext);
-	if (len1 <= len2)
-		return (0);
-	return (ft_strcmp(&filename[len1 - len2], ext) == 0);
+	while (1337)
+	{
+		if (should_parse_map(inf))
+		{
+			if (parse_map(fd, inf))
+				return (free_info(inf), 1);
+			break ;
+		}
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		if (parser_helper(inf, line))
+			return (free_info(inf), free(line), 1);
+		free(line);
+	}
+	return (0);
 }
 
 bool	parser(char *filename)
 {
 	int		fd;
-	char	*line;
+	t_info	inf;
 
+	ft_bzero(&inf, sizeof(t_info));
 	if (!has_ext(filename, ".cub"))
-		return (printf("ERROR\n%s: invalid filename\n", filename), 1);
+		return (raise(INVALID_FNAME), 1);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		return (perror(filename), 1);
-	while (1337)
-	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		printf("%s", line);
-		free(line);
-	}
+		return (p_error(filename, ""), 1);
+	if (parse_all(fd, &inf))
+		return (1);
+	if (check_info(&inf))
+		return (free_info(&inf), raise(MALFORMED_FILE), 1);
+	if (!valid_map(inf.map))
+		return (free_info(&inf), raise(INVALID_MAP), 1);
+	free_info(&inf);
 	return (0);
 }
