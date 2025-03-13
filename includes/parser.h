@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 04:07:26 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/13 00:12:21 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/13 03:28:35 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_info
 {
 	char	*data[6];
 	char	**map;
+	int		_F;
+	int		_C;
 }			t_info;
 
 char		*get_next_line(int fd);
@@ -40,6 +42,7 @@ bool		parser(char *filename);
 bool		valid_map(char **map);
 bool		has_ext(char *filename, char *ext);
 t_type		match_type(char *s);
+char		*match_type_str(t_type type);
 void		free_info(t_info *inf);
 bool		parse_map(int fd, t_info *inf);
 bool		check_info(t_info *inf);
@@ -51,5 +54,6 @@ bool		ft_check_walls(char **map, int map_height);
 bool		check_extremes(char *line);
 bool		check_space_surroundings(char **map, unsigned int i,
 				unsigned int j);
+bool		parse_colors(t_info *inf);
 
 #endif

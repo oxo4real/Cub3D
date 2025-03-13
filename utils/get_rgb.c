@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_rgb.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/13 00:21:12 by mhayyoun         ###   ########.fr       */
+/*   Created: 2025/03/13 03:20:04 by mhayyoun          #+#    #+#             */
+/*   Updated: 2025/03/13 03:32:15 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "utils.h"
 
-// void	leaks(void)
-// {
-// 	system("leaks -q cub3d");
-// }
-
-int	main(int ac, char *av[])
+int	get_rgb(u_int8_t r, u_int8_t g, u_int8_t b)
 {
-	// atexit(leaks);
-	(void)av;
-	if (ac != 2)
-	{
-		printf("Usage: %s <map>.cub\n", av[0]);
-		return (1);
-	}
-	if (parser(av[1]))
-		return (1);
-	return (0);
+	return (r << 24 | g << 16 | b << 8 | 255);
+}
+
+int	get_r(int rgba)
+{
+	return ((rgba >> 24) & 0xFF);
+}
+
+int	get_g(int rgba)
+{
+	return ((rgba >> 16) & 0xFF);
+}
+
+int	get_b(int rgba)
+{
+	return ((rgba >> 8) & 0xFF);
+}
+
+int	get_a(int rgba)
+{
+	return (rgba & 0xFF);
 }

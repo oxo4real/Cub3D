@@ -1,17 +1,19 @@
 CC = cc
-CFLAGS = -Werror -Wextra -Wall -g #-fsanitize=address,undefined
+CFLAGS = -Werror -Wextra -Wall -g -fsanitize=address
 SRCS = main.c
 
 SRCS += parser/get_next_line.c parser/get_next_line_utils.c parser/parser.c \
 		parser/valid_map.c parser/valid_map_utils.c parser/match_type.c \
-		parser/free_info.c parser/parser_utils.c parser/has_ext.c
+		parser/free_info.c parser/parser_utils.c parser/has_ext.c \
+		parser/parse_colors.c
 
 
 SRCS += utils/ft_calloc.c utils/ft_memcpy.c utils/ft_split.c utils/ft_strjoin.c \
 		utils/ft_strlen.c utils/ft_memset.c utils/ft_bzero.c utils/ft_strdup.c \
 		utils/free2darr.c utils/is_space.c utils/ft_strjoin_deli.c utils/print_error.c \
 		utils/ft_putchar_fd.c utils/ft_putstr_fd.c utils/ft_putendl_fd.c utils/ft_strcmp.c \
-		utils/ft_strtrim_end.c utils/ft_trimmed_len.c utils/str_empty.c
+		utils/ft_strtrim_end.c utils/ft_trimmed_len.c utils/str_empty.c utils/ft_atou.c \
+		utils/ft_isunint8.c utils/ft_strsjoin.c utils/get_rgb.c utils/ato_color.c utils/ft_arr_len.c \
 
 BUILD = build
 OBJS = $(patsubst %.c, $(BUILD)/%.o, $(SRCS))

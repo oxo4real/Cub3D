@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 05:41:31 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/13 00:05:13 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/13 03:45:40 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,15 @@ int		ft_strcmp(char *s1, char *s2);
 size_t	ft_trimmed_len(char const *s);
 char	*ft_strtrim_end(char *s);
 bool	str_empty(char *s);
+uint8_t	ft_atou(const char *str);
+bool	ft_isunint8(char *s);
+size_t	ft_arr_len(char **strs);
+char	*ft_strsjoin(char **strs, char *sep);
+int		get_r(int rgba);
+int		get_g(int rgba);
+int		get_b(int rgba);
+int		get_a(int rgba);
+int		get_rgb(u_int8_t r, u_int8_t g, u_int8_t b);
+int		ato_color(char *s);
 
 #endif

@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atou.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/13 00:21:12 by mhayyoun         ###   ########.fr       */
+/*   Created: 2025/03/13 00:57:07 by mhayyoun          #+#    #+#             */
+/*   Updated: 2025/03/13 00:57:18 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "utils.h"
 
-// void	leaks(void)
-// {
-// 	system("leaks -q cub3d");
-// }
-
-int	main(int ac, char *av[])
+uint8_t	ft_atou(const char *str)
 {
-	// atexit(leaks);
-	(void)av;
-	if (ac != 2)
+	uint8_t	result;
+
+	result = 0;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '+')
+		str++;
+	while (*str != '\0' && *str >= '0' && *str <= '9')
 	{
-		printf("Usage: %s <map>.cub\n", av[0]);
-		return (1);
+		result = result * 10 + (uint8_t)(*str - '0');
+		str++;
 	}
-	if (parser(av[1]))
-		return (1);
-	return (0);
+	return (result);
 }

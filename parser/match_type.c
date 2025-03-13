@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 00:04:23 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/13 00:04:41 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/13 03:28:12 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,21 @@ t_type	match_type(char *s)
 	else if (*s == 'C' && len == 1)
 		return (C);
 	return (UNDEFINED);
+}
+
+char	*match_type_str(t_type type)
+{
+	if (type == C)
+		return ("C");
+	if (type == EA)
+		return ("EA");
+	if (type == SO)
+		return ("SO");
+	if (type == F)
+		return ("F");
+	if (type == WE)
+		return ("WE");
+	if (type == NO)
+		return ("NO");
+	return ("UNDEFINED");
 }
