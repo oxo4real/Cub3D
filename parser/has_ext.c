@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 23:35:10 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/12 23:36:03 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/13 00:22:11 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	has_ext(char *filename, char *ext)
 
 	len1 = ft_strlen(filename);
 	len2 = ft_strlen(ext);
-	if (len1 <= len2)
+	if (len1 < len2)
 		return (0);
 	return (ft_strcmp(&filename[len1 - len2], ext) == 0);
 }
