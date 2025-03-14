@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 05:41:31 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/13 03:45:40 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/14 05:31:41 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define PI 3.14159265358979323846
 
 typedef enum e_error
 {
@@ -58,6 +60,8 @@ int		get_g(int rgba);
 int		get_b(int rgba);
 int		get_a(int rgba);
 int		get_rgb(u_int8_t r, u_int8_t g, u_int8_t b);
-int		ato_color(char *s);
+bool	ato_color(char *s, int *co);
+bool	ft_isdirection(char c);
+double	get_direction(char c);
 
 #endif

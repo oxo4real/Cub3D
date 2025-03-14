@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 04:11:01 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/13 03:49:18 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/13 16:46:00 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,28 +80,28 @@ void	print_info(t_info *inf)
 	_F = inf->_F;
 	printf("F: (%d, %d, %d)\n", get_r(_F), get_g(_F), get_b(_F));
 	printf("C: (%d, %d, %d)\n", get_r(_C), get_g(_C), get_b(_C));
+	printf("C: %d\n", _C);
+	printf("F: %d\n", _F);
 }
 
-bool	parser(char *filename)
+bool	parser(char *filename, t_info *inf)
 {
-	int		fd;
-	t_info	inf;
+	int	fd;
 
-	ft_bzero(&inf, sizeof(t_info));
+	ft_bzero(inf, sizeof(t_info));
 	if (!has_ext(filename, ".cub"))
 		return (raise(INVALID_FNAME), 1);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (p_error(filename, ""), 1);
-	if (parse_all(fd, &inf))
+	if (parse_all(fd, inf))
 		return (1);
-	if (check_info(&inf))
-		return (free_info(&inf), raise(MALFORMED_FILE), 1);
-	if (!valid_map(inf.map))
-		return (free_info(&inf), raise(INVALID_MAP), 1);
-	if (parse_colors(&inf))
-		return (free_info(&inf), 1);
-	print_info(&inf);
-	free_info(&inf);
+	if (check_info(inf))
+		return (free_info(inf), raise(MALFORMED_FILE), 1);
+	if (!valid_map(inf->map))
+		return (free_info(inf), raise(INVALID_MAP), 1);
+	if (parse_colors(inf))
+		return (free_info(inf), 1);
+	print_info(inf);
 	return (0);
 }
