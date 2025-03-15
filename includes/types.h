@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 05:38:44 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/14 05:40:21 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/15 01:38:11 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,39 @@ typedef enum e_type
 	F,
 	C,
 	UNDEFINED
-}				t_type;
+}					t_type;
 
 typedef struct s_player
 {
-	double		x;
-	double		y;
-	double		dir;
-}				t_player;
+	double			x;
+	double			y;
+	double			dir;
+}					t_player;
 
 typedef struct s_info
 {
-	char		*data[6];
-	char		**map;
-	mlx_t		*mlx;
-	t_player	player;
-	int			max_width;
-	int			height;
-	double		factor;
-	int			_F;
-	int			_C;
-}				t_info;
+	char			*data[6];
+	char			**map;
+	mlx_t			*mlx;
+	t_player		player;
+	int				max_width;
+	int				height;
+	double			factor;
+	int				_F;
+	int				_C;
+}					t_info;
+
+typedef struct s_list
+{
+	char			*line;
+	struct s_list	*next;
+}					t_list;
+
+typedef struct s_head
+{
+	t_list			*head;
+	t_list			*last;
+	int				size;
+}					t_head;
 
 #endif

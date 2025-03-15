@@ -6,11 +6,14 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 00:07:35 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/13 00:09:08 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/15 02:07:14 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+#include "types.h"
+#include "utils.h"
+#include <stdio.h>
 
 bool	check_info(t_info *inf)
 {
@@ -42,23 +45,22 @@ bool	should_parse_map(t_info *inf)
 	return (1);
 }
 
-bool	parse_map_helper(char **line, int *is_map, char **buff)
+bool	parse_map_helper(char **line, int *is_map, t_head *head)
 {
-	char	*tmp;
+	t_list	*new;
 
 	if (!str_empty(*line) && *is_map != -1)
 	{
 		*is_map = 1;
-		tmp = ft_strjoin_deli(*buff, *line, "\x07");
-		free(*buff);
-		if (!tmp)
-			return (free(*line), raise(MALLOC), 1);
-		*buff = tmp;
+		new = ft_lstnew(ft_strtrim_end(*line));
+		if (!new)
+			return (free(*line), ft_lstclear(&head->head), raise(MALLOC), 1);
+		ft_lstadd_back(head, new);
 	}
 	else if (*is_map == 1)
 		*is_map = -1;
 	else if (*is_map == -1 && !str_empty(*line))
-		return (free(*buff), free(*line), raise(INVALID_MAP), 1);
+		return (ft_lstclear(&head->head), free(*line), raise(INVALID_MAP), 1);
 	return (0);
 }
 
@@ -66,26 +68,24 @@ bool	parse_map(int fd, t_info *inf)
 {
 	char	*line;
 	int		is_map;
-	char	*buff;
+	t_head	head;
 
-	buff = ft_strdup("\x07");
-	if (!buff)
-		return (raise(MALLOC), 1);
 	is_map = 0;
+	head.head = NULL;
+	head.last = NULL;
+	head.size = 0;
 	while (1337)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		if (parse_map_helper(&line, &is_map, &buff))
+		if (parse_map_helper(&line, &is_map, &head))
 			return (1);
 		free(line);
 	}
 	if (!is_map)
-		return (free(buff), raise(NO_MAP), 1);
-	inf->map = ft_split(buff, 0x7);
-	free(buff);
-	if (!inf->map)
-		return (raise(MALLOC), 1);
+		return (ft_lstclear(&head.head), raise(NO_MAP), 1);
+	if (lst_to_array(&head, inf))
+		return (ft_lstclear(&head.head), raise(MALLOC), 1);
 	return (0);
 }

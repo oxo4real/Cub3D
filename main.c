@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/14 05:38:12 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/15 02:09:59 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 #include "raycaster.h"
 #include "utils.h"
 #include <math.h>
-#include <sys/time.h>
 
 void	leaks(void)
 {
-	system("leaks -q cub3d");
+	system("leaks -q cub3D");
 }
 
 int	map_the_map(t_info *inf, int x, int y)
@@ -181,7 +180,7 @@ int	main(int ac, char *av[])
 	mlx_image_t	*img[2] = {NULL};
 	mlx_t		*mlx;
 
-	// atexit(leaks);
+	atexit(leaks);
 	(void)av;
 	if (ac != 2)
 	{

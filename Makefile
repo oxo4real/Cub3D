@@ -13,8 +13,10 @@ SRCS += utils/ft_calloc.c utils/ft_memcpy.c utils/ft_split.c utils/ft_strjoin.c 
 		utils/free2darr.c utils/is_space.c utils/ft_strjoin_deli.c utils/print_error.c \
 		utils/ft_putchar_fd.c utils/ft_putstr_fd.c utils/ft_putendl_fd.c utils/ft_strcmp.c \
 		utils/ft_strtrim_end.c utils/ft_trimmed_len.c utils/str_empty.c utils/ft_atou.c \
-		utils/ft_isunint8.c utils/ft_strsjoin.c utils/get_rgb.c utils/ato_color.c utils/ft_arr_len.c \
-		utils/get_direction.c utils/ft_isdirection.c
+		utils/ft_isunint8.c utils/ft_strsjoin.c utils/get_rgb.c utils/ato_color.c \
+		utils/get_direction.c utils/ft_isdirection.c utils/ft_lstadd_back_bonus.c \
+		utils/ft_lstclear_bonus.c utils/ft_lstdelone_bonus.c utils/ft_lstnew_bonus.c \
+		utils/ft_arr_len.c utils/lst_to_array.c
 
 SRCS += raycaster/draw_square.c
 
