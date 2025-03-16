@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 03:22:22 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/13 15:27:44 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/15 02:50:44 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ bool	parse_color(char *s, int *co)
 
 bool	parse_colors(t_info *inf)
 {
-	if (parse_color(inf->data[F], &inf->_F))
+	if (parse_color(inf->data[F], &inf->_f))
 		return (1);
-	if (parse_color(inf->data[C], &inf->_C))
+	if (parse_color(inf->data[C], &inf->_c))
 		return (1);
 	return (0);
 }

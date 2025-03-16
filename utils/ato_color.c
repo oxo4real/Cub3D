@@ -6,17 +6,17 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 03:20:49 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/13 15:25:35 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/15 02:50:19 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-static bool color_convert(char *s, u_int8_t	rgb[3])
+static bool	color_convert(char *s, u_int8_t rgb[3])
 {
-	char		tmp;
-	int			i;
-	int			j;
+	char	tmp;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -37,7 +37,7 @@ static bool color_convert(char *s, u_int8_t	rgb[3])
 		else
 			i++;
 	}
-	return 0;
+	return (0);
 }
 
 bool	ato_color(char *s, int *co)
@@ -45,7 +45,7 @@ bool	ato_color(char *s, int *co)
 	u_int8_t	rgb[3];
 
 	if (color_convert(s, rgb))
-		return 1;
+		return (1);
 	*co = get_rgb(rgb[0], rgb[1], rgb[2]);
 	return (0);
 }

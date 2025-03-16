@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 04:11:01 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/15 02:16:47 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/15 02:50:44 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ bool	parse_all(int fd, t_info *inf)
 void	print_info(t_info *inf)
 {
 	int	i;
-	int	_C;
-	int	_F;
+	int	_c;
+	int	_f;
 
 	i = 0;
 	while (i < UNDEFINED)
@@ -76,12 +76,12 @@ void	print_info(t_info *inf)
 		printf("%s: %s\n", match_type_str(i), inf->data[i]);
 		i++;
 	}
-	_C = inf->_C;
-	_F = inf->_F;
-	printf("F: (%d, %d, %d)\n", get_r(_F), get_g(_F), get_b(_F));
-	printf("C: (%d, %d, %d)\n", get_r(_C), get_g(_C), get_b(_C));
-	printf("C: %d\n", _C);
-	printf("F: %d\n", _F);
+	_c = inf->_c;
+	_f = inf->_f;
+	printf("F: (%d, %d, %d)\n", get_r(_f), get_g(_f), get_b(_f));
+	printf("C: (%d, %d, %d)\n", get_r(_c), get_g(_c), get_b(_c));
+	printf("C: %d\n", _c);
+	printf("F: %d\n", _f);
 }
 
 bool	parser(char *filename, t_info *inf)
