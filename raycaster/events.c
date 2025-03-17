@@ -6,40 +6,34 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:48:58 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 20:21:31 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 23:12:31 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster.h"
+#include "utils.h"
 
 void		ft_move(double new_x, double new_y, t_info *inf);
 
 void	mouse_event(void *param)
 {
-	t_info		*inf;
-	static int	prev_i = 0;
-	int			i;
-	int			j;
+	t_info	*inf;
+	int		delta_x;
+	int		i;
+	int		j;
 
 	inf = param;
 	mlx_get_mouse_pos(inf->mlx, &i, &j);
-	if (i != prev_i)
+	delta_x = i - WIDTH / 2;
+	if (delta_x)
 	{
-		if (i > 501)
-		{
-			inf->player.dir += 0.03;
-			if (inf->player.dir > 2 * M_PI)
-				inf->player.dir -= 2 * M_PI;
-		}
-		else if (i < 499)
-		{
-			inf->player.dir -= 0.03;
-			if (inf->player.dir < 0)
-				inf->player.dir += 2 * M_PI;
-		}
-		prev_i = i;
+		inf->player.dir += delta_x * 0.002;
+		if (inf->player.dir > 2 * M_PI)
+			inf->player.dir -= 2 * M_PI;
+		else if (inf->player.dir < 0)
+			inf->player.dir += 2 * M_PI;
 	}
-	mlx_set_mouse_pos(inf->mlx, 500, 500);
+	mlx_set_mouse_pos(inf->mlx, WIDTH / 2, HEIGHT / 2);
 }
 
 static void	n_in_map(void *param)

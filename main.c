@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 21:21:52 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 23:17:45 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ bool	init_cub(t_info *inf, mlx_t *mlx)
 	if (init_minimap(inf) || load_textures(inf))
 		return (1);
 	hook_events(mlx, inf);
+	mlx_set_mouse_pos(inf->mlx, WIDTH / 2, HEIGHT / 2);
 	return (0);
 }
 bool	load_animation_helper(t_anim *anim)
@@ -184,7 +185,7 @@ void	animation_handle(void *param)
 	t_anim	*anim;
 
 	anim = param;
-	if (mlx_get_time() - anim->last_time >= (1.0 / 250) && !anim->is_idle)
+	if (!anim->is_idle)
 	{
 		if (anim->prev)
 			anim->prev->enabled = 0;
