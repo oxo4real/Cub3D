@@ -6,36 +6,42 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 04:11:01 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/15 02:50:44 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 05:52:32 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
+void	skip_types(char **s, t_type type)
+{
+	int	i;
+
+	i = 1 + (type < F);
+	while (*s && i)
+	{
+		(*s)++;
+		i--;
+	}
+	while (*s && is_space(**s))
+		(*s)++;
+}
+
 bool	parser_helper(t_info *inf, char *s)
 {
 	t_type	type;
-	char	**tmp;
-	char	*tmp1;
 
-	tmp = ft_split(s, ' ');
-	if (!tmp)
-		return (raise(MALLOC), 1);
-	type = match_type(tmp[0]);
+	skip_space(&s);
+	type = match_type(s);
 	if (type == UNDEFINED)
-		return (freestrarr(&tmp), raise(MALFORMED_FILE), 1);
+		return (raise(MALFORMED_FILE), 1);
 	if (inf->data[type])
-		return (freestrarr(&tmp), raise(MALFORMED_FILE), 1);
-	if (type < F && (ft_arr_len(&tmp[1]) != 1))
-		return (freestrarr(&tmp), raise(MALFORMED_FILE), 1);
-	tmp1 = ft_strsjoin(&tmp[1], "");
-	if (!tmp1)
-		return (freestrarr(&tmp), raise(MALLOC), 1);
-	inf->data[type] = ft_strtrim_end(tmp1);
-	free(tmp1);
+		return (raise(MALFORMED_FILE), 1);
+	skip_types(&s, type);
+	if (!*s)
+		return (raise(MALFORMED_FILE), 1);
+	inf->data[type] = ft_strtrim_end(s);
 	if (!inf->data[type])
-		return (freestrarr(&tmp), raise(MALLOC), 1);
-	freestrarr(&tmp);
+		return (raise(MALLOC), 1);
 	return (0);
 }
 

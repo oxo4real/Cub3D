@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_square.c                                      :+:      :+:    :+:   */
+/*   hook_events.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/14 05:37:00 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/14 05:37:42 by mhayyoun         ###   ########.fr       */
+/*   Created: 2025/03/17 05:38:28 by mhayyoun          #+#    #+#             */
+/*   Updated: 2025/03/17 05:57:56 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster.h"
 
-void	draw_square(mlx_image_t *img, int x, int y, int size, uint32_t color)
+void	hook_events(mlx_t *mlx, t_info *inf)
 {
-	for (int i = 0; i < size; i++)
-	{
-		for (int j = 0; j < size; j++)
-		{
-			mlx_put_pixel(img, x + i, y + j, color);
-		}
-	}
+	mlx_loop_hook(mlx, minimap_event, inf);
+	mlx_loop_hook(mlx, mouse_event, inf);
+	mlx_loop_hook(mlx, key_event, inf);
 }

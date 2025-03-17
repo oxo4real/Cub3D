@@ -6,11 +6,29 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 03:22:22 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/15 02:50:44 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 01:02:52 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+
+void	clear_space(char *s)
+{
+	int	i;
+	int	j;
+
+	if (!s)
+		return ;
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		if (!(s[i] == ' '))
+			s[j++] = s[i];
+		i++;
+	}
+	s[j] = '\0';
+}
 
 bool	parse_color(char *s, int *co)
 {
@@ -19,6 +37,7 @@ bool	parse_color(char *s, int *co)
 
 	comma = 0;
 	i = 0;
+	clear_space(s);
 	if (s[i] && s[i] == ',')
 		return (raise(MALFORMED_FILE), 1);
 	while (s[i])

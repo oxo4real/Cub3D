@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 05:41:31 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 03:41:31 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/17 05:52:12 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "types.h"
 # include <errno.h>
-# include <math.h>
 # include <fcntl.h>
+# include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -75,5 +75,6 @@ void	ft_lstclear(t_list **lst);
 bool	lst_to_array(t_head *head, t_info *inf);
 char	*trimmify(char *s);
 double	ft_min(double a, double b);
+void	skip_space(char **s);
 
 #endif

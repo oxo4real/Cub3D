@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 00:04:23 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/13 03:28:12 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/16 21:40:20 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,19 @@
 
 t_type	match_type(char *s)
 {
-	size_t	len;
-
-	len = ft_strlen(s);
 	if (!s || !*s)
 		return (UNDEFINED);
-	if (*s == 'N' && *(s + 1) == 'O' && len == 2)
+	if (*s == 'N' && *(s + 1) == 'O' && is_space(*(s + 2)))
 		return (NO);
-	else if (*s == 'S' && *(s + 1) == 'O' && len == 2)
+	else if (*s == 'S' && *(s + 1) == 'O' && is_space(*(s + 2)))
 		return (SO);
-	else if (*s == 'W' && *(s + 1) == 'E' && len == 2)
+	else if (*s == 'W' && *(s + 1) == 'E' && is_space(*(s + 2)))
 		return (WE);
-	else if (*s == 'E' && *(s + 1) == 'A' && len == 2)
+	else if (*s == 'E' && *(s + 1) == 'A' && is_space(*(s + 2)))
 		return (EA);
-	else if (*s == 'F' && len == 1)
+	else if (*s == 'F' && is_space(*(s + 1)))
 		return (F);
-	else if (*s == 'C' && len == 1)
+	else if (*s == 'C' && is_space(*(s + 1)))
 		return (C);
 	return (UNDEFINED);
 }

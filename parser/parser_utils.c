@@ -6,14 +6,11 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 00:07:35 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/15 02:07:14 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 01:00:51 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-#include "types.h"
-#include "utils.h"
-#include <stdio.h>
 
 bool	check_info(t_info *inf)
 {

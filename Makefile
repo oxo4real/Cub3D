@@ -2,24 +2,24 @@ CC = cc
 CFLAGS = -Werror -Wextra -Wall -O3# -g -fsanitize=address
 SRCS = main.c
 
-SRCS += parser/get_next_line.c parser/get_next_line_utils.c parser/parser.c \
-		parser/valid_map.c parser/valid_map_utils.c parser/match_type.c \
-		parser/free_info.c parser/parser_utils.c parser/has_ext.c \
-		parser/parse_colors.c parser/extract_info.c
+PARSER = get_next_line.c get_next_line_utils.c parser.c valid_map.c has_ext.c \
+		valid_map_utils.c match_type.c free_info.c parser_utils.c parse_colors.c \
+		extract_info.c
 
 
-SRCS += utils/ft_calloc.c utils/ft_memcpy.c utils/ft_split.c utils/ft_strjoin.c \
-		utils/ft_strlen.c utils/ft_memset.c utils/ft_bzero.c utils/ft_strdup.c \
-		utils/free2darr.c utils/is_space.c utils/ft_strjoin_deli.c utils/print_error.c \
-		utils/ft_putchar_fd.c utils/ft_putstr_fd.c utils/ft_putendl_fd.c utils/ft_strcmp.c \
-		utils/ft_strtrim_end.c utils/ft_trimmed_len.c utils/str_empty.c utils/ft_atou.c \
-		utils/ft_isunint8.c utils/ft_strsjoin.c utils/get_rgb.c utils/ato_color.c \
-		utils/get_direction.c utils/ft_isdirection.c utils/ft_lstadd_back_bonus.c \
-		utils/ft_lstclear_bonus.c utils/ft_lstdelone_bonus.c utils/ft_lstnew_bonus.c \
-		utils/ft_arr_len.c utils/lst_to_array.c utils/trimmify.c utils/ft_min.c
+UTILS = ft_calloc.c ft_memcpy.c ft_split.c ft_strjoin.c ft_strlen.c ft_memset.c \
+		ft_bzero.c ft_strdup.c free2darr.c is_space.c ft_strjoin_deli.c ft_strcmp.c \
+		print_error.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_atou.c \
+		ft_strtrim_end.c ft_trimmed_len.c str_empty.c ft_isunint8.c ft_strsjoin.c \
+		get_rgb.c ato_color.c get_direction.c ft_isdirection.c lst_to_array.c \
+		ft_lstadd_back_bonus.c ft_min.c skip_space.c ft_lstclear_bonus.c ft_arr_len.c \
+		ft_lstdelone_bonus.c ft_lstnew_bonus.c trimmify.c
 
-SRCS += raycaster/draw_square.c raycaster/draw_col.c raycaster/hray_len.c raycaster/vray_len.c \
-		raycaster/raycast.c
+RAYCASTER = raycast.c draw_col.c hray_len.c vray_len.c events.c hook_events.c minimap.c
+
+SRCS += $(addprefix parser/, $(PARSER))
+SRCS += $(addprefix utils/, $(UTILS))
+SRCS += $(addprefix raycaster/, $(RAYCASTER))
 
 BUILD = build
 OBJS = $(patsubst %.c, $(BUILD)/%.o, $(SRCS))
@@ -34,7 +34,7 @@ MLXINC = /Users/$(USER)/.lib/incs
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) -framework Cocoa -framework OpenGL -framework IOKit -L$(MLXDIR) -lmlx42 -lglfw3 $^ -o $(NAME)
+	@$(CC) $(CFLAGS) -framework Cocoa -framework OpenGL -framework IOKit -L$(MLXDIR) $^ -o $(NAME) -lmlx42 -lglfw3
 	@echo "compiled ✅"
 
 $(BUILD)/%.o: %.c $(HEADERS)

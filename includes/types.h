@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 05:38:44 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 03:49:51 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/17 05:36:20 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,28 @@ typedef struct s_player
 	double			dir;
 }					t_player;
 
+typedef struct s_point
+{
+	int				x;
+	int				y;
+}					t_point;
+
 typedef struct s_info
 {
 	char			*data[6];
 	char			**map;
 	mlx_t			*mlx;
 	mlx_image_t		*frame;
+	mlx_image_t		*m;
+	mlx_image_t		*n;
+	double			factor;
+	double			last_time;
+	double			dt;
 	t_player		player;
 	int				max_width;
 	int				height;
-	double			factor;
 	int				_f;
 	int				_c;
-	double			last_time;
 }					t_info;
 
 typedef struct s_list
