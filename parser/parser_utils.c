@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 00:07:35 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 01:00:51 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 06:40:44 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@ bool	check_info(t_info *inf)
 	}
 	if (!inf->map)
 		return (1);
+	return (0);
+}
+
+bool	check_ext(t_info *inf)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (!has_ext(inf->data[i], ".png"))
+			return (1);
+		i++;
+	}
 	return (0);
 }
 

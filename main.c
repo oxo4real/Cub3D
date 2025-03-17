@@ -6,12 +6,14 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 06:03:06 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 06:31:11 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "MLX42.h"
 #include "parser.h"
 #include "raycaster.h"
+#include "utils.h"
 
 void	leaks(void)
 {
@@ -29,7 +31,7 @@ bool	init_cub(t_info *inf, mlx_t *mlx)
 	if (!inf->frame)
 		return (1);
 	mlx_image_to_window(mlx, inf->frame, 0, 0);
-	if (init_minimap(inf))
+	if (init_minimap(inf) || load_textures(inf))
 		return (1);
 	hook_events(mlx, inf);
 	return (0);
@@ -51,8 +53,8 @@ int	main(int ac, char *av[])
 	mlx = mlx_init(1920, 1080, "Cub3D", false);
 	if (!mlx)
 		return (free_info(&inf), 1);
-	init_cub(&inf, mlx);
-	mlx_loop(mlx);
+	if (!init_cub(&inf, mlx))
+		mlx_loop(mlx);
 	free_info(&inf);
 	mlx_terminate(mlx);
 	return (0);

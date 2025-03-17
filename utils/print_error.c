@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 20:49:05 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/13 16:27:05 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 06:38:54 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static char	*get_error_msg(t_error error)
 		return ("THERE IS NO MAP!");
 	else if (error == INVALID_MAP)
 		return ("invalid map!");
+	else if (error == INVALID_EXT)
+		return ("invalid filename extension!");
 	return ("ERROR");
 }
 

@@ -6,11 +6,11 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 00:06:37 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 05:46:12 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 06:42:02 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "utils.h"
 
 void	free_info(t_info *inf)
 {
@@ -31,7 +31,11 @@ void	free_info(t_info *inf)
 		freestrarr(&inf->map);
 		inf->map = NULL;
 	}
-	mlx_delete_image(inf->mlx, inf->frame);
-	mlx_delete_image(inf->mlx, inf->m);
-	mlx_delete_image(inf->mlx, inf->n);
+	if (inf->frame)
+		mlx_delete_image(inf->mlx, inf->frame);
+	if (inf->m)
+		mlx_delete_image(inf->mlx, inf->m);
+	if (inf->n)
+		mlx_delete_image(inf->mlx, inf->n);
+	unload_textures(inf);
 }

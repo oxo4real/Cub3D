@@ -3,8 +3,8 @@ CFLAGS = -Werror -Wextra -Wall -O3# -g -fsanitize=address
 SRCS = main.c
 
 PARSER = get_next_line.c get_next_line_utils.c parser.c valid_map.c has_ext.c \
-		valid_map_utils.c match_type.c free_info.c parser_utils.c parse_colors.c \
-		extract_info.c
+		valid_map_utils.c match_type.c parser_utils.c parse_colors.c extract_info.c \
+		
 
 
 UTILS = ft_calloc.c ft_memcpy.c ft_split.c ft_strjoin.c ft_strlen.c ft_memset.c \
@@ -13,7 +13,7 @@ UTILS = ft_calloc.c ft_memcpy.c ft_split.c ft_strjoin.c ft_strlen.c ft_memset.c 
 		ft_strtrim_end.c ft_trimmed_len.c str_empty.c ft_isunint8.c ft_strsjoin.c \
 		get_rgb.c ato_color.c get_direction.c ft_isdirection.c lst_to_array.c \
 		ft_lstadd_back_bonus.c ft_min.c skip_space.c ft_lstclear_bonus.c ft_arr_len.c \
-		ft_lstdelone_bonus.c ft_lstnew_bonus.c trimmify.c
+		ft_lstdelone_bonus.c ft_lstnew_bonus.c trimmify.c free_info.c textures.c
 
 RAYCASTER = raycast.c draw_col.c hray_len.c vray_len.c events.c hook_events.c minimap.c
 

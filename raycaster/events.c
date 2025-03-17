@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:48:58 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 05:41:20 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 06:42:39 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ static void	n_in_map(void *param)
 	double	y;
 
 	inf = (t_info *)param;
-	mlx_delete_image(inf->mlx, inf->n);
+	if (inf->n)
+		mlx_delete_image(inf->mlx, inf->n);
 	inf->n = NULL;
 	x = 300.0 / 2 - 140 * cos(inf->player.dir);
 	y = 300.0 / 2 - 140 * sin(-inf->player.dir);

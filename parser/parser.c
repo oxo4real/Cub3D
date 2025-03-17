@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 04:11:01 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 05:52:32 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 06:39:09 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ bool	parser(char *filename, t_info *inf)
 		return (1);
 	if (check_info(inf))
 		return (free_info(inf), raise(MALFORMED_FILE), 1);
+	if (check_ext(inf))
+		return (free_info(inf), raise(INVALID_EXT), 1);
 	if (!valid_map(inf->map))
 		return (free_info(inf), raise(INVALID_MAP), 1);
 	if (parse_colors(inf))

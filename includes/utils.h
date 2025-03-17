@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 05:41:31 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 05:52:12 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 06:37:31 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef enum e_error
 	MALFORMED_FILE,
 	INVALID_FNAME,
 	INVALID_MAP,
-	NO_MAP
+	NO_MAP,
+	INVALID_EXT
 }		t_error;
 
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -76,5 +77,7 @@ bool	lst_to_array(t_head *head, t_info *inf);
 char	*trimmify(char *s);
 double	ft_min(double a, double b);
 void	skip_space(char **s);
-
+void	free_info(t_info *inf);
+bool	load_textures(t_info *inf);
+void	unload_textures(t_info *inf);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 04:07:26 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/15 02:48:22 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 06:36:34 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ bool	valid_map(char **map);
 bool	has_ext(char *filename, char *ext);
 t_type	match_type(char *s);
 char	*match_type_str(t_type type);
-void	free_info(t_info *inf);
 bool	parse_map(int fd, t_info *inf);
 bool	check_info(t_info *inf);
+bool	check_ext(t_info *inf);
 bool	should_parse_map(t_info *inf);
 int		ft_map_height(char **map);
 bool	only_ones_and_spaces(char *line);

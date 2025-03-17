@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 05:38:44 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 05:36:20 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 06:24:24 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_point
 typedef struct s_info
 {
 	char			*data[6];
+	mlx_texture_t	*t[4];
 	char			**map;
 	mlx_t			*mlx;
 	mlx_image_t		*frame;
