@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:48:58 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 17:31:36 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/17 20:21:31 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster.h"
 
-void	ft_move(double new_x, double new_y, t_info *inf);
+void		ft_move(double new_x, double new_y, t_info *inf);
 
 void	mouse_event(void *param)
 {
@@ -27,13 +27,13 @@ void	mouse_event(void *param)
 	{
 		if (i > 501)
 		{
-			inf->player.dir += 0.025;
+			inf->player.dir += 0.03;
 			if (inf->player.dir > 2 * M_PI)
 				inf->player.dir -= 2 * M_PI;
 		}
 		else if (i < 499)
 		{
-			inf->player.dir -= 0.025;
+			inf->player.dir -= 0.03;
 			if (inf->player.dir < 0)
 				inf->player.dir += 2 * M_PI;
 		}
@@ -75,16 +75,16 @@ void	move_event(t_info *inf)
 {
 	if (mlx_is_key_down(inf->mlx, MLX_KEY_D))
 		ft_move(inf->player.x - 3 * inf->dt * sin(inf->player.dir),
-			inf->player.y + 3 * inf->dt * cos(inf->player.dir),inf);
+			inf->player.y + 3 * inf->dt * cos(inf->player.dir), inf);
 	if (mlx_is_key_down(inf->mlx, MLX_KEY_A))
 		ft_move(inf->player.x + 3 * inf->dt * sin(inf->player.dir),
-			inf->player.y - 3 * inf->dt * cos(inf->player.dir),inf);
+			inf->player.y - 3 * inf->dt * cos(inf->player.dir), inf);
 	if (mlx_is_key_down(inf->mlx, MLX_KEY_W))
 		ft_move(inf->player.x + 3 * inf->dt * cos(inf->player.dir),
-			inf->player.y + 3 * inf->dt * sin(inf->player.dir),inf);
+			inf->player.y + 3 * inf->dt * sin(inf->player.dir), inf);
 	if (mlx_is_key_down(inf->mlx, MLX_KEY_S))
 		ft_move(inf->player.x - 3 * inf->dt * cos(inf->player.dir),
-			inf->player.y - 3 * inf->dt * sin(inf->player.dir),inf);
+			inf->player.y - 3 * inf->dt * sin(inf->player.dir), inf);
 }
 
 void	key_event(void *param)

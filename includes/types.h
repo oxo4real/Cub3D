@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 05:38:44 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 06:24:24 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 21:14:17 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,20 @@ typedef struct s_player
 	double			dir;
 }					t_player;
 
-typedef struct s_point
+typedef struct s_anim
 {
-	int				x;
-	int				y;
-}					t_point;
+	mlx_texture_t	*t[13];
+	mlx_image_t		*frames[13];
+	mlx_image_t		*prev;
+	mlx_texture_t	*t_idle;
+	mlx_image_t		*idle;
+	mlx_texture_t	*t_cross;
+	mlx_image_t		*cross;
+	mlx_t			*mlx;
+	double			last_time;
+	int				cur_frame;
+	bool			is_idle;
+}					t_anim;
 
 typedef struct s_info
 {
