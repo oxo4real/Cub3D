@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:48:58 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 06:42:39 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:31:36 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster.h"
+
+void	ft_move(double new_x, double new_y, t_info *inf);
 
 void	mouse_event(void *param)
 {
@@ -72,25 +74,17 @@ void	minimap_event(void *param)
 void	move_event(t_info *inf)
 {
 	if (mlx_is_key_down(inf->mlx, MLX_KEY_D))
-	{
-		inf->player.x -= 3 * inf->dt * sin(inf->player.dir);
-		inf->player.y += 3 * inf->dt * cos(inf->player.dir);
-	}
+		ft_move(inf->player.x - 3 * inf->dt * sin(inf->player.dir),
+			inf->player.y + 3 * inf->dt * cos(inf->player.dir),inf);
 	if (mlx_is_key_down(inf->mlx, MLX_KEY_A))
-	{
-		inf->player.x += 3 * inf->dt * sin(inf->player.dir);
-		inf->player.y -= 3 * inf->dt * cos(inf->player.dir);
-	}
+		ft_move(inf->player.x + 3 * inf->dt * sin(inf->player.dir),
+			inf->player.y - 3 * inf->dt * cos(inf->player.dir),inf);
 	if (mlx_is_key_down(inf->mlx, MLX_KEY_W))
-	{
-		inf->player.x += 3 * inf->dt * cos(inf->player.dir);
-		inf->player.y += 3 * inf->dt * sin(inf->player.dir);
-	}
+		ft_move(inf->player.x + 3 * inf->dt * cos(inf->player.dir),
+			inf->player.y + 3 * inf->dt * sin(inf->player.dir),inf);
 	if (mlx_is_key_down(inf->mlx, MLX_KEY_S))
-	{
-		inf->player.x -= 3 * inf->dt * cos(inf->player.dir);
-		inf->player.y -= 3 * inf->dt * sin(inf->player.dir);
-	}
+		ft_move(inf->player.x - 3 * inf->dt * cos(inf->player.dir),
+			inf->player.y - 3 * inf->dt * sin(inf->player.dir),inf);
 }
 
 void	key_event(void *param)

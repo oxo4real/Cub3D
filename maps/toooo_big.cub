@@ -1,7 +1,14 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./textures/bg1.png
+SO ./textures/bg2.png
+
+
+
+WE ./textures/bg3.png
+
+
+
+
+EA         ./textures/bg4.png
 F 0,0, 0
 C 255,255,255
 
