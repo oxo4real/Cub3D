@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/16 19:12:55 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 03:41:58 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ int	map_the_map(t_info *inf, int x, int y)
 
 	map = inf->map;
 	p = inf->player;
-	double angle = p.dir + PI / 2 + -0.01; // Use the same direction as movement
+	double angle = p.dir + M_PI_2 + -0.01; // Use the same direction as movement
 	cos_a = cos(-angle);
 	sin_a = sin(-angle);
 	// Convert pixel position to world coordinates relative to player
 	local_x = ((x - 5 * 30) / (double)30) * inf->factor;
 	local_y = ((y - 5 * 30) / (double)30) * inf->factor;
 	// Apply rotation transformation
-	map_X = floor(p.x + local_x * cos_a + local_y * sin_a);
-	map_Y = floor(p.y - local_x * sin_a + local_y * cos_a);
+	map_X = (int)floor(p.x + local_x * cos_a + local_y * sin_a);
+	map_Y = (int)floor(p.y - local_x * sin_a + local_y * cos_a);
 	// Ensure within map bounds
 	if (map_Y >= 0 && map_Y < inf->height && map_X >= 0 && map[map_Y]
 		&& map_X < (int)ft_strlen(map[map_Y]))
@@ -111,6 +111,7 @@ void	event(void *param)
 		prev_y = inf->player.y;
 		prev_dir = inf->player.dir;
 	}
+	raycast(inf);
 }
 
 void	mouse_event(void *param)
@@ -126,15 +127,15 @@ void	mouse_event(void *param)
 	{
 		if (i > 501)
 		{
-			inf->player.dir += 0.08;
-			if (inf->player.dir > 2 * PI)
-				inf->player.dir -= 2 * PI;
+			inf->player.dir += 0.03;
+			if (inf->player.dir > 2 * M_PI)
+				inf->player.dir -= 2 * M_PI;
 		}
 		else if (i < 499)
 		{
-			inf->player.dir -= 0.08;
+			inf->player.dir -= 0.03;
 			if (inf->player.dir < 0)
-				inf->player.dir += 2 * PI;
+				inf->player.dir += 2 * M_PI;
 		}
 		prev_i = i;
 	}
@@ -173,14 +174,14 @@ void	key_event(void *param)
 	if (mlx_is_key_down(inf->mlx, MLX_KEY_RIGHT))
 	{
 		inf->player.dir += 2 * dt;
-		if (inf->player.dir > 2 * PI)
-			inf->player.dir -= 2 * PI;
+		if (inf->player.dir > 2 * M_PI)
+			inf->player.dir -= 2 * M_PI;
 	}
 	if (mlx_is_key_down(inf->mlx, MLX_KEY_LEFT))
 	{
 		inf->player.dir -= 2 * dt;
 		if (inf->player.dir < 0)
-			inf->player.dir += 2 * PI;
+			inf->player.dir += 2 * M_PI;
 	}
 	if (mlx_is_key_down(inf->mlx, MLX_KEY_KP_ADD) && inf->factor > 1)
 		inf->factor *= 0.95;
@@ -204,7 +205,6 @@ void	init_cub(t_info *inf, mlx_t *mlx)
 int	main(int ac, char *av[])
 {
 	t_info		inf;
-	mlx_image_t	*img[2] = {NULL};
 	mlx_t		*mlx;
 
 	atexit(leaks);
@@ -219,9 +219,9 @@ int	main(int ac, char *av[])
 	mlx = mlx_init(1920, 1080, "Cub3d", false);
 	if (!mlx)
 		return (1);
-	img[0] = mlx_new_image(mlx, 1920, 1920);
-	draw_square(img[0], 0, 0, 1920, 0XFFFFFF);
-	mlx_image_to_window(mlx, img[0], 0, 0);
+	inf.frame = mlx_new_image(mlx, 1920, 1920);
+	draw_square(inf.frame, 0, 0, 1920, 0XFFFFFF);
+	mlx_image_to_window(mlx, inf.frame, 0, 0);
 	init_cub(&inf, mlx);
 	mlx_loop(mlx);
 	free_info(&inf);

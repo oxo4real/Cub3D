@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 05:41:31 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/16 20:08:41 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 03:41:31 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 
 # include "types.h"
 # include <errno.h>
+# include <math.h>
 # include <fcntl.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
-# define PI 3.14159265358979323846
+# define DOF 2000
+# define FOV M_PI_4
+# define WIDTH 1920
+# define HEIGHT 1080
 
 typedef enum e_error
 {
@@ -70,5 +74,6 @@ void	ft_lstdelone(t_list *lst);
 void	ft_lstclear(t_list **lst);
 bool	lst_to_array(t_head *head, t_info *inf);
 char	*trimmify(char *s);
+double	ft_min(double a, double b);
 
 #endif

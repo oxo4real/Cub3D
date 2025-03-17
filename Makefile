@@ -16,9 +16,10 @@ SRCS += utils/ft_calloc.c utils/ft_memcpy.c utils/ft_split.c utils/ft_strjoin.c 
 		utils/ft_isunint8.c utils/ft_strsjoin.c utils/get_rgb.c utils/ato_color.c \
 		utils/get_direction.c utils/ft_isdirection.c utils/ft_lstadd_back_bonus.c \
 		utils/ft_lstclear_bonus.c utils/ft_lstdelone_bonus.c utils/ft_lstnew_bonus.c \
-		utils/ft_arr_len.c utils/lst_to_array.c utils/trimmify.c
+		utils/ft_arr_len.c utils/lst_to_array.c utils/trimmify.c utils/ft_min.c
 
-SRCS += raycaster/draw_square.c
+SRCS += raycaster/draw_square.c raycaster/draw_col.c raycaster/hray_len.c raycaster/vray_len.c \
+		raycaster/raycast.c
 
 BUILD = build
 OBJS = $(patsubst %.c, $(BUILD)/%.o, $(SRCS))
