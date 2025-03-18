@@ -1,14 +1,14 @@
-NO ./textures/cs1.png
-SO ./textures/bg2.png
+NO ./textures/bg6.png
+SO ./textures/bg6.png
 
 
 
-WE ./textures/cs3.png
+WE ./textures/bg6.png
 
 
 
 
-EA         ./textures/cs4.png
+EA         ./textures/bg6.png
 
 F 123,123,       123
 

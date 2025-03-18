@@ -6,7 +6,7 @@
 /*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:25:10 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/18 04:05:36 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/18 04:09:02 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,9 @@ static unsigned int	gt_clr(t_ray *ray, t_info *inf, t_type dir, double factor_y)
 	unsigned char	*px;
 
 	if (dir == SO)
-		factor_x = (fmod(ray->rx, 1));
-	else if (dir == NO)
 		factor_x = 1 - (fmod(ray->rx, 1));
+	else if (dir == NO)
+		factor_x = (fmod(ray->rx, 1));
 	else if (dir == WE)
 		factor_x = 1 - (fmod(ray->ry, 1));
 	else
