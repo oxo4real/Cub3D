@@ -6,11 +6,12 @@
 /*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:25:10 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/18 04:22:19 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/18 04:53:11 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster.h"
+#include <math.h>
 
 static double		ft_map(int px, t_info *inf);
 static unsigned int	gt_clr(t_ray *ray, t_info *inf, t_type dir,
@@ -27,7 +28,7 @@ void	draw_col(t_info *inf, int px)
 	vars.hlen = hray_len(inf, vars.angle, &vars.ray2);
 	vars.ray_len = ft_min(vars.vlen, vars.hlen) * cos(inf->player.dir
 			- vars.angle);
-	vars.ceiling_end = (int)((HEIGHT / 2.0) - floor(HEIGHT / vars.ray_len));
+	vars.ceiling_end = (int)((HEIGHT / 2.0) - round(HEIGHT / vars.ray_len));
 	i = 0;
 	while (i < HEIGHT)
 	{
