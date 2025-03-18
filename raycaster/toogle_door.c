@@ -6,7 +6,7 @@
 /*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 21:20:20 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/18 23:29:35 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/18 23:39:22 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@ void	toogle_door(struct mlx_key_data key_data, void *param)
 		vars.vlen = vray_len_door(inf, vars.angle, &vars.ray1);
 		vars.hlen = hray_len_door(inf, vars.angle, &vars.ray2);
 		vars.ray_len = ft_min(vars.vlen, vars.hlen);
-		//printf("%lf : %lf\n", vars.ray2.rx, vars.ray2.ry);
 		if (vars.ray_len == vars.hlen)
 		{
-			printf("%lf : %lf\n", vars.ray2.rx, vars.ray2.ry);
 			if (ray_in_map(&vars.ray2, inf)
 				&& inf->map[(int)vars.ray2.ry][(int)vars.ray2.rx] == 'C')
 				inf->map[(int)vars.ray2.ry][(int)vars.ray2.rx] = 'O';
