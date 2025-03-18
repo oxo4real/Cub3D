@@ -6,7 +6,7 @@
 /*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/18 17:00:46 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/18 23:25:07 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int ac, char *av[])
 	mlx_t	*mlx;
 	t_anim	anim;
 
-	//atexit(leaks);
+	atexit(leaks);
 	if (ac != 2)
 	{
 		printf("Usage: %s <map>.cub\n", av[0]);

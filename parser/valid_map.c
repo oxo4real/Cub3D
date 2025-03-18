@@ -6,13 +6,12 @@
 /*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 19:27:22 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/18 18:22:01 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/18 20:37:09 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "utils.h"
-#include <stdio.h>
 
 bool	valid_map(char **map)
 {
@@ -71,7 +70,8 @@ bool	ft_check_symbols(char **map)
 			if (map[i][j] == 'N' || map[i][j] == 'E' || map[i][j] == 'S'
 				|| map[i][j] == 'W')
 				nplayer++;
-			else if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' ')
+			else if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' '
+					&& map[i][j] != 'C' && map[i][j] != 'O')
 				return (false);
 			j++;
 		}

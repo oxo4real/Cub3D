@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hray_len.c                                         :+:      :+:    :+:   */
+/*   vray_len_door.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 21:22:43 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/18 20:37:52 by aaghzal          ###   ########.fr       */
+/*   Created: 2025/03/16 21:36:33 by aaghzal           #+#    #+#             */
+/*   Updated: 2025/03/18 23:04:49 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,19 @@
 
 static void	init_vars(t_ray *ray, t_info *inf, double angle);
 static bool	ray_in_map(t_ray *ray, t_info *inf);
-static bool	player_in_wall(t_info *inf);
 
-double	hray_len(t_info *inf, double angle, t_ray *ray)
+double	vray_len_door(t_info *inf, double angle, t_ray *ray)
 {
 	int	i;
 
 	init_vars(ray, inf, angle);
-	if (player_in_wall(inf))
-		return (sqrt(pow(inf->player.y - ray->ry, 2) + pow(inf->player.x
-					- ray->rx, 2)));
 	i = 0;
-	while (i < DOF)
+	while (i < 3)
 	{
-		if (ray_in_map(ray, inf) && (inf->map[(int)ray->ry][(int)ray->rx] == '1'
-				|| inf->map[(int)ray->ry][(int)ray->rx] == 'C'))
+		if (ray_in_map(ray, inf) && 
+			(inf->map[(int)ray->ry][(int)ray->rx] == 'O'
+				|| inf->map[(int)ray->ry][(int)ray->rx] == 'C'
+				|| inf->map[(int)ray->ry][(int)ray->rx] == '1'))
 			return (sqrt(pow(inf->player.y - ray->ry, 2) + pow(inf->player.x
 						- ray->rx, 2)));
 		ray->ry += ray->yo;
@@ -40,19 +38,19 @@ double	hray_len(t_info *inf, double angle, t_ray *ray)
 
 static void	init_vars(t_ray *ray, t_info *inf, double angle)
 {
-	if (angle >= M_PI)
+	if (angle >= 3 * M_PI_2 || angle <= M_PI_2)
 	{
-		ray->ry = floor(inf->player.y) - 0.000001;
-		ray->rx = (inf->player.y - ray->ry) * (-1 / tan(angle)) + inf->player.x;
-		ray->yo = -1;
-		ray->xo = -ray->yo * (-1 / tan(angle));
+		ray->rx = ceil(inf->player.x);
+		ray->ry = (inf->player.x - ray->rx) * -tan(angle) + inf->player.y;
+		ray->xo = 1;
+		ray->yo = -ray->xo * -tan(angle);
 	}
-	else if (angle < M_PI)
+	else if (angle <= 3 * M_PI_2 && angle >= M_PI_2)
 	{
-		ray->ry = ceil(inf->player.y);
-		ray->rx = (inf->player.y - ray->ry) * (-1 / tan(angle)) + inf->player.x;
-		ray->yo = 1;
-		ray->xo = -ray->yo * (-1 / tan(angle));
+		ray->rx = floor(inf->player.x) - 0.00001;
+		ray->ry = (inf->player.x - ray->rx) * -tan(angle) + inf->player.y;
+		ray->xo = -1;
+		ray->yo = -ray->xo * -tan(angle);
 	}
 }
 
@@ -60,12 +58,4 @@ static bool	ray_in_map(t_ray *ray, t_info *inf)
 {
 	return (ray->ry < inf->height && ray->ry >= 0 && ray->rx >= 0
 		&& ray->rx < (int)ft_strlen(inf->map[(int)ray->ry]));
-}
-
-static bool	player_in_wall(t_info *inf)
-{
-	return (inf->player.y < inf->height && inf->player.y >= 0
-		&& inf->player.x >= 0
-		&& inf->player.x < ft_strlen(inf->map[(int)inf->player.y])
-		&& inf->map[(int)inf->player.y][(int)inf->player.x] == '1');
 }

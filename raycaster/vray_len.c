@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vray_len.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:36:33 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/18 03:25:59 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:34:58 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ double	vray_len(t_info *inf, double angle, t_ray *ray)
 	while (i < DOF)
 	{
 		if ((ray_in_map(ray, inf))
-			&& inf->map[(int)ray->ry][(int)ray->rx] == '1')
+			&& (inf->map[(int)ray->ry][(int)ray->rx] == '1'
+				|| inf->map[(int)ray->ry][(int)ray->rx] == 'C'))
 			return (sqrt(pow(inf->player.y - ray->ry, 2) + pow(inf->player.x
 						- ray->rx, 2)));
 		ray->ry += ray->yo;
