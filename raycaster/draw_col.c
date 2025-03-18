@@ -6,7 +6,7 @@
 /*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:25:10 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/18 04:09:02 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/18 04:22:19 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	draw_col(t_info *inf, int px)
 	vars.hlen = hray_len(inf, vars.angle, &vars.ray2);
 	vars.ray_len = ft_min(vars.vlen, vars.hlen) * cos(inf->player.dir
 			- vars.angle);
-	vars.ceiling_end = (int)((HEIGHT / 2.0) - HEIGHT / vars.ray_len);
+	vars.ceiling_end = (int)((HEIGHT / 2.0) - floor(HEIGHT / vars.ray_len));
 	i = 0;
 	while (i < HEIGHT)
 	{
@@ -87,13 +87,13 @@ static unsigned int	gt_clr(t_ray *ray, t_info *inf, t_type dir, double factor_y)
 	unsigned char	*px;
 
 	if (dir == SO)
-		factor_x = 1 - (fmod(ray->rx, 1));
+		factor_x = 1 - (fabs(fmod(ray->rx, 1)));
 	else if (dir == NO)
-		factor_x = (fmod(ray->rx, 1));
+		factor_x = (fabs(fmod(ray->rx, 1)));
 	else if (dir == WE)
-		factor_x = 1 - (fmod(ray->ry, 1));
+		factor_x = 1 - (fabs(fmod(ray->ry, 1)));
 	else
-		factor_x = (fmod(ray->ry, 1));
+		factor_x = (fabs(fmod(ray->ry, 1)));
 	texture = inf->t[dir];
 	x = (unsigned int)(factor_x * texture->width) * texture->bytes_per_pixel;
 	y = (unsigned int)(texture->height * factor_y) * texture->bytes_per_pixel;
