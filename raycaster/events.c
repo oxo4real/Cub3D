@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:48:58 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/18 03:13:07 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/18 03:51:42 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 
 void	mouse_event(void *param)
 {
-	t_info	*inf;
-	int		delta_x;
-	int		i;
-	int		j;
+	t_info		*inf;
+	int			delta_x;
+	int			x;
+	int			y;
+	static int	start = 2;
 
 	inf = param;
-	mlx_get_mouse_pos(inf->mlx, &i, &j);
-	delta_x = i - WIDTH / 2;
+	x = WIDTH / 2;
+	if (!start)
+		mlx_get_mouse_pos(inf->mlx, &x, &y);
+	else
+		start--;
+	delta_x = x - WIDTH / 2;
 	if (delta_x)
 	{
 		inf->player.dir += delta_x * 0.002;

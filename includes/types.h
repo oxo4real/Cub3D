@@ -6,13 +6,13 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 05:38:44 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/18 03:04:35 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/18 03:26:23 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
-# include "MLX42.h"
+# include <MLX42.h>
 
 typedef enum e_type
 {

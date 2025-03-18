@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_col.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:25:10 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/18 02:01:16 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/18 03:24:55 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
 #include "raycaster.h"
-#include "types.h"
-#include "utils.h"
-#include <math.h>
 
 static double		ft_map(int px, t_info *inf);
 static unsigned int	gt_clr(t_ray *ray, t_info *inf, t_type dir,

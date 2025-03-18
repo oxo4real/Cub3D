@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   hray_len.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:22:43 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/17 23:22:35 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/18 03:25:10 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "types.h"
 #include "utils.h"
-#include <limits.h>
-#include <math.h>
 
 static void	init_vars(t_ray *ray, t_info *inf, double angle);
 static bool	ray_in_map(t_ray *ray, t_info *inf);

@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 05:41:31 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/18 03:14:51 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/18 03:25:17 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "types.h"
 # include <errno.h>
 # include <fcntl.h>
+# include <limits.h>
 # include <math.h>
 # include <stdbool.h>
 # include <stdio.h>

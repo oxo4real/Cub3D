@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vray_len.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:36:33 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/18 01:12:32 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/18 03:25:59 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "types.h"
 #include "utils.h"
-#include <limits.h>
-#include <math.h>
 
 static void	init_vars(t_ray *ray, t_info *inf, double angle);
 static bool	ray_in_map(t_ray *ray, t_info *inf);
@@ -21,7 +18,7 @@ static bool	player_in_wall(t_info *inf);
 
 double	vray_len(t_info *inf, double angle, t_ray *ray)
 {
-	int		i;
+	int	i;
 
 	init_vars(ray, inf, angle);
 	if (player_in_wall(inf))

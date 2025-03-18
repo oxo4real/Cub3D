@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 01:58:48 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/17 02:40:31 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/18 03:25:38 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "types.h"
 #include "raycaster.h"
-#include "utils.h"
 
 void	raycast(t_info *inf)
 {

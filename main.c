@@ -6,15 +6,12 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/18 03:07:06 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/18 03:32:54 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
 #include "parser.h"
 #include "raycaster.h"
-#include "types.h"
-#include "utils.h"
 
 void	leaks(void)
 {
@@ -29,7 +26,6 @@ bool	init_cub(t_info *inf, mlx_t *mlx, t_anim *anim)
 	inf->factor = 1;
 	inf->last_time = mlx_get_time();
 	mlx_set_cursor_mode(mlx, MLX_MOUSE_HIDDEN);
-	mlx_set_mouse_pos(inf->mlx, WIDTH / 2, HEIGHT / 2);
 	inf->frame = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if (!inf->frame)
 		return (1);
