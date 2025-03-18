@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 05:41:31 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/18 00:41:59 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/18 03:14:51 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ typedef enum e_error
 	INVALID_FNAME,
 	INVALID_MAP,
 	NO_MAP,
-	INVALID_EXT
+	INVALID_EXT,
+	MLX
 }		t_error;
 
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -61,11 +62,8 @@ uint8_t	ft_atou(const char *str);
 bool	ft_isunint8(char *s);
 size_t	ft_arr_len(char **strs);
 char	*ft_strsjoin(char **strs, char *sep);
-int		get_r(int rgba);
-int		get_g(int rgba);
-int		get_b(int rgba);
-int		get_a(int rgba);
 int		get_rgb(u_int8_t r, u_int8_t g, u_int8_t b);
+int		get_rgba(u_int8_t r, u_int8_t g, u_int8_t b, u_int8_t a);
 bool	ato_color(char *s, int *co);
 bool	ft_isdirection(char c);
 double	get_direction(char c);
@@ -80,6 +78,5 @@ void	skip_space(char **s);
 void	free_info(t_info *inf);
 bool	load_textures(t_info *inf);
 void	unload_textures(t_info *inf);
-int	get_rgba(u_int8_t r, u_int8_t g, u_int8_t b, u_int8_t a);
 
 #endif

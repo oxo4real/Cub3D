@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 05:38:44 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/18 02:01:22 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/18 03:04:35 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ typedef enum e_type
 
 typedef struct s_ray
 {
-	double	yo;
-	double	xo;
-	double	ry;
-	double	rx;
-}			t_ray;
+	double			yo;
+	double			xo;
+	double			ry;
+	double			rx;
+}					t_ray;
 
 typedef struct s_draw_col_vars
 {
@@ -61,7 +61,6 @@ typedef struct s_anim
 	mlx_texture_t	*t_cross;
 	mlx_image_t		*cross;
 	mlx_t			*mlx;
-	double			last_time;
 	int				cur_frame;
 	bool			is_idle;
 }					t_anim;

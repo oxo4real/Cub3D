@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 04:11:01 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 06:39:09 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/18 03:04:05 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,26 +70,6 @@ bool	parse_all(int fd, t_info *inf)
 	return (0);
 }
 
-void	print_info(t_info *inf)
-{
-	int	i;
-	int	_c;
-	int	_f;
-
-	i = 0;
-	while (i < UNDEFINED)
-	{
-		printf("%s: %s\n", match_type_str(i), inf->data[i]);
-		i++;
-	}
-	_c = inf->_c;
-	_f = inf->_f;
-	printf("F: (%d, %d, %d)\n", get_r(_f), get_g(_f), get_b(_f));
-	printf("C: (%d, %d, %d)\n", get_r(_c), get_g(_c), get_b(_c));
-	printf("C: %d\n", _c);
-	printf("F: %d\n", _f);
-}
-
 bool	parser(char *filename, t_info *inf)
 {
 	int	fd;
@@ -110,6 +90,5 @@ bool	parser(char *filename, t_info *inf)
 		return (free_info(inf), raise(INVALID_MAP), 1);
 	if (parse_colors(inf))
 		return (free_info(inf), 1);
-	print_info(inf);
 	return (0);
 }

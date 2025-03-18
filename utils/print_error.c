@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 20:49:05 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 06:38:54 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/18 03:00:39 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static char	*get_error_msg(t_error error)
 		return ("invalid map!");
 	else if (error == INVALID_EXT)
 		return ("invalid filename extension!");
+	else if (error == MLX)
+		return ("MLX error!");
 	return ("ERROR");
 }
 

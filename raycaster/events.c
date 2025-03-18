@@ -6,14 +6,11 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:48:58 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 23:12:31 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/18 03:13:07 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster.h"
-#include "utils.h"
-
-void		ft_move(double new_x, double new_y, t_info *inf);
 
 void	mouse_event(void *param)
 {
@@ -60,9 +57,9 @@ void	minimap_event(void *param)
 	minimap(inf);
 	n_in_map(inf);
 	if (mlx_is_key_down(inf->mlx, MLX_KEY_KP_ADD) && inf->factor > 1)
-		inf->factor *= 0.95;
+		inf->factor *= 0.90;
 	if (mlx_is_key_down(inf->mlx, MLX_KEY_KP_SUBTRACT) && inf->factor < 5)
-		inf->factor /= 0.95;
+		inf->factor /= 0.90;
 }
 
 void	move_event(t_info *inf)
