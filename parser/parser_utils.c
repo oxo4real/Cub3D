@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 00:07:35 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 06:40:44 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:50:52 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,18 @@ bool	should_parse_map(t_info *inf)
 bool	parse_map_helper(char **line, int *is_map, t_head *head)
 {
 	t_list	*new;
+	char 	*tmp;
 
 	if (!str_empty(*line) && *is_map != -1)
 	{
 		*is_map = 1;
-		new = ft_lstnew(ft_strtrim_end(*line));
-		if (!new)
+		tmp = ft_strtrim_end(*line);
+		if (!tmp)
 			return (free(*line), ft_lstclear(&head->head), raise(MALLOC), 1);
+		new = ft_lstnew(tmp);
+		if (!new)
+			return (free(tmp), free(*line), ft_lstclear(&head->head),
+				raise(MALLOC), 1);
 		ft_lstadd_back(head, new);
 	}
 	else if (*is_map == 1)

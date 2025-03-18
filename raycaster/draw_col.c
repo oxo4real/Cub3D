@@ -6,7 +6,7 @@
 /*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:25:10 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/18 04:53:11 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/18 18:59:43 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ static void	put_pixel(t_draw_col_vars vars, t_info *inf, int i, int px)
 		if (vars.ray_len == vars.hlen * cos(inf->player.dir - vars.angle))
 		{
 			if (vars.angle > M_PI)
-				mlx_put_pixel(inf->frame, px, i, gt_clr(&vars.ray2, inf, NO,
+				mlx_put_pixel(inf->frame, px, i, gt_clr(&vars.ray2, inf, SO,
 						factor_y));
 			else
-				mlx_put_pixel(inf->frame, px, i, gt_clr(&vars.ray2, inf, SO,
+				mlx_put_pixel(inf->frame, px, i, gt_clr(&vars.ray2, inf, NO,
 						factor_y));
 		}
 		else if (vars.angle <= 3 * M_PI_2 && vars.angle >= M_PI_2)
-			mlx_put_pixel(inf->frame, px, i, gt_clr(&vars.ray1, inf, WE,
+			mlx_put_pixel(inf->frame, px, i, gt_clr(&vars.ray1, inf, EA,
 					factor_y));
 		else if (vars.ray_len == vars.vlen * cos(inf->player.dir - vars.angle))
-			mlx_put_pixel(inf->frame, px, i, gt_clr(&vars.ray1, inf, EA,
+			mlx_put_pixel(inf->frame, px, i, gt_clr(&vars.ray1, inf, WE,
 					factor_y));
 	}
 	else
@@ -88,13 +88,13 @@ static unsigned int	gt_clr(t_ray *ray, t_info *inf, t_type dir, double factor_y)
 	unsigned char	*px;
 
 	if (dir == SO)
-		factor_x = 1 - (fabs(fmod(ray->rx, 1)));
-	else if (dir == NO)
 		factor_x = (fabs(fmod(ray->rx, 1)));
+	else if (dir == NO)
+		factor_x = 1 - (fabs(fmod(ray->rx, 1)));
 	else if (dir == WE)
-		factor_x = 1 - (fabs(fmod(ray->ry, 1)));
-	else
 		factor_x = (fabs(fmod(ray->ry, 1)));
+	else
+		factor_x = 1 - (fabs(fmod(ray->ry, 1)));
 	texture = inf->t[dir];
 	x = (unsigned int)(factor_x * texture->width) * texture->bytes_per_pixel;
 	y = (unsigned int)(texture->height * factor_y) * texture->bytes_per_pixel;
