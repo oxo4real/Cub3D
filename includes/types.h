@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 05:38:44 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/18 03:26:23 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/18 21:03:22 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ typedef enum e_type
 	C,
 	UNDEFINED
 }					t_type;
+
+typedef enum e_stat
+{
+	IDLE,
+	AIMING,
+	BACK_AIMING,
+	SHOOTING,
+	SHOOTING_AIM,
+}					t_stat;
 
 typedef struct s_ray
 {
@@ -53,16 +62,22 @@ typedef struct s_player
 
 typedef struct s_anim
 {
-	mlx_texture_t	*t[13];
-	mlx_image_t		*frames[13];
+	mlx_texture_t	*t_fire[13];
+	mlx_image_t		*i_fire[13];
+	mlx_texture_t	*t_aim_fire[13];
+	mlx_image_t		*i_aim_fire[13];
+	mlx_texture_t	*t_aim[11];
+	mlx_image_t		*i_aim[11];
 	mlx_image_t		*prev;
 	mlx_texture_t	*t_idle;
 	mlx_image_t		*idle;
 	mlx_texture_t	*t_cross;
 	mlx_image_t		*cross;
 	mlx_t			*mlx;
-	int				cur_frame;
-	bool			is_idle;
+	int				frame_fire;
+	int				frame_aim_fire;
+	int				frame_aim;
+	t_stat			stat;
 }					t_anim;
 
 typedef struct s_info
