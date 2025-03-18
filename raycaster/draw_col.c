@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_col.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:25:10 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/18 03:24:55 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/18 04:05:36 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ static void	put_pixel(t_draw_col_vars vars, t_info *inf, int i, int px)
 	{
 		if (vars.ray_len == vars.hlen * cos(inf->player.dir - vars.angle))
 		{
-			if (inf->player.dir > M_PI)
-				mlx_put_pixel(inf->frame, px, i, gt_clr(&vars.ray2, inf, SO,
+			if (vars.angle > M_PI)
+				mlx_put_pixel(inf->frame, px, i, gt_clr(&vars.ray2, inf, NO,
 						factor_y));
 			else
-				mlx_put_pixel(inf->frame, px, i, gt_clr(&vars.ray2, inf, NO,
+				mlx_put_pixel(inf->frame, px, i, gt_clr(&vars.ray2, inf, SO,
 						factor_y));
 		}
 		else if (vars.angle <= 3 * M_PI_2 && vars.angle >= M_PI_2)
 			mlx_put_pixel(inf->frame, px, i, gt_clr(&vars.ray1, inf, WE,
 					factor_y));
-		else
+		else if (vars.ray_len == vars.vlen * cos(inf->player.dir - vars.angle))
 			mlx_put_pixel(inf->frame, px, i, gt_clr(&vars.ray1, inf, EA,
 					factor_y));
 	}
