@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 00:07:35 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/18 17:50:52 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/18 22:15:24 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool	should_parse_map(t_info *inf)
 bool	parse_map_helper(char **line, int *is_map, t_head *head)
 {
 	t_list	*new;
-	char 	*tmp;
+	char	*tmp;
 
 	if (!str_empty(*line) && *is_map != -1)
 	{

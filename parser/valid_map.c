@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 19:27:22 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/18 18:22:01 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/18 22:17:09 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-#include "utils.h"
-#include <stdio.h>
 
 bool	valid_map(char **map)
 {
@@ -25,14 +23,18 @@ bool	valid_map(char **map)
 	return (true);
 }
 
+bool	ft_check_walls_helper(char *s1, char *s2)
+{
+	return (!only_ones_and_spaces(s1) || !only_ones_and_spaces(s2));
+}
+
 bool	ft_check_walls(char **map, int map_height)
 {
 	size_t	i;
 	size_t	j;
 
 	i = 0;
-	if (!only_ones_and_spaces(map[map_height - 1])
-		|| !only_ones_and_spaces(map[0]))
+	if (ft_check_walls_helper(map[map_height - 1], map[0]))
 		return (false);
 	while (map[++i + 1])
 	{
