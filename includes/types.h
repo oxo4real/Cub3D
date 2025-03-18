@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 05:38:44 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 21:14:17 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/18 02:01:22 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,25 @@ typedef enum e_type
 	C,
 	UNDEFINED
 }					t_type;
+
+typedef struct s_ray
+{
+	double	yo;
+	double	xo;
+	double	ry;
+	double	rx;
+}			t_ray;
+
+typedef struct s_draw_col_vars
+{
+	double			ray_len;
+	double			angle;
+	int				ceiling_end;
+	double			vlen;
+	double			hlen;
+	t_ray			ray1;
+	t_ray			ray2;
+}					t_draw_col_vars;
 
 typedef struct s_player
 {

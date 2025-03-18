@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_rgb.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 03:20:04 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/13 03:32:15 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/18 00:41:33 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 int	get_rgb(u_int8_t r, u_int8_t g, u_int8_t b)
 {
 	return (r << 24 | g << 16 | b << 8 | 255);
+}
+
+int	get_rgba(u_int8_t r, u_int8_t g, u_int8_t b, u_int8_t a)
+{
+	return (r << 24 | g << 16 | b << 8 | a);
 }
 
 int	get_r(int rgba)

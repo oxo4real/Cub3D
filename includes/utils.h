@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 05:41:31 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 06:37:31 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/18 00:41:59 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,6 @@ void	skip_space(char **s);
 void	free_info(t_info *inf);
 bool	load_textures(t_info *inf);
 void	unload_textures(t_info *inf);
+int	get_rgba(u_int8_t r, u_int8_t g, u_int8_t b, u_int8_t a);
+
 #endif

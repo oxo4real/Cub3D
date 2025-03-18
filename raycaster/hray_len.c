@@ -6,7 +6,7 @@
 /*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:22:43 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/17 03:47:43 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/17 23:22:35 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,26 @@
 #include <limits.h>
 #include <math.h>
 
-typedef struct s_ray
-{
-	double	yo;
-	double	xo;
-	double	ry;
-	double	rx;
-}			t_ray;
-
 static void	init_vars(t_ray *ray, t_info *inf, double angle);
 static bool	ray_in_map(t_ray *ray, t_info *inf);
 static bool	player_in_wall(t_info *inf);
 
-double	hray_len(t_info *inf, double angle)
+double	hray_len(t_info *inf, double angle, t_ray *ray)
 {
-	t_ray	ray;
-	int		i;
+	int	i;
 
-	init_vars(&ray, inf, angle);
+	init_vars(ray, inf, angle);
 	if (player_in_wall(inf))
-		return (sqrt(pow(inf->player.y - ray.ry, 2) + pow(inf->player.x
-					- ray.rx, 2)));
+		return (sqrt(pow(inf->player.y - ray->ry, 2) + pow(inf->player.x
+					- ray->rx, 2)));
 	i = 0;
 	while (i < DOF)
 	{
-		if (ray_in_map(&ray, inf) && inf->map[(int)ray.ry][(int)ray.rx] == '1')
-			return (sqrt(pow(inf->player.y - ray.ry, 2) + pow(inf->player.x
-						- ray.rx, 2)));
-		ray.ry += ray.yo;
-		ray.rx += ray.xo;
+		if (ray_in_map(ray, inf) && inf->map[(int)ray->ry][(int)ray->rx] == '1')
+			return (sqrt(pow(inf->player.y - ray->ry, 2) + pow(inf->player.x
+						- ray->rx, 2)));
+		ray->ry += ray->yo;
+		ray->rx += ray->xo;
 		i++;
 	}
 	return (INT_MAX);

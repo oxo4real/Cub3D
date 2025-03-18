@@ -6,17 +6,18 @@
 /*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 05:35:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 17:32:01 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/17 22:35:35 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCASTER_H
 # define RAYCASTER_H
+# include "types.h"
 # include "utils.h"
 
 void	draw_col(t_info *inf, int px);
-double	hray_len(t_info *inf, double angle);
-double	vray_len(t_info *inf, double angle);
+double	hray_len(t_info *inf, double angle, t_ray *ray);
+double	vray_len(t_info *inf, double angle, t_ray *ray);
 void	raycast(t_info *inf);
 void	minimap(t_info *inf);
 bool	init_minimap(t_info *inf);

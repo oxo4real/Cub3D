@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 04:14:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 23:17:45 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/17 23:43:11 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,7 +203,8 @@ void	animation_handle(void *param)
 		anim->prev = anim->idle;
 		anim->prev->enabled = 1;
 	}
-	if (mlx_is_mouse_down(anim->mlx, MLX_MOUSE_BUTTON_LEFT) && anim->is_idle)
+	if ((mlx_is_mouse_down(anim->mlx, MLX_MOUSE_BUTTON_LEFT)
+			|| mlx_is_key_down(anim->mlx, MLX_KEY_SPACE)) && anim->is_idle)
 		anim->is_idle = 0;
 }
 
