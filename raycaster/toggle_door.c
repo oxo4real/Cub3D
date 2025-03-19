@@ -1,22 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   toogle_door.c                                      :+:      :+:    :+:   */
+/*   toggle_door.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 21:20:20 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/18 23:39:22 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/19 02:16:06 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
 #include "raycaster.h"
-#include <complex.h>
 
 static bool	ray_in_map(t_ray *ray, t_info *inf);
 
-void	toogle_door(struct mlx_key_data key_data, void *param)
+static void	toggle(t_draw_col_vars *vars, t_info *inf)
+{
+	if (vars->ray_len == vars->hlen)
+	{
+		if (ray_in_map(&vars->ray2, inf)
+			&& inf->map[(int)vars->ray2.ry][(int)vars->ray2.rx] == 'C')
+			inf->map[(int)vars->ray2.ry][(int)vars->ray2.rx] = 'O';
+		else if (ray_in_map(&vars->ray2, inf)
+			&& inf->map[(int)vars->ray2.ry][(int)vars->ray2.rx] == 'O')
+			inf->map[(int)vars->ray2.ry][(int)vars->ray2.rx] = 'C';
+	}
+	else
+	{
+		if (ray_in_map(&vars->ray1, inf)
+			&& inf->map[(int)vars->ray1.ry][(int)vars->ray1.rx] == 'C')
+			inf->map[(int)vars->ray1.ry][(int)vars->ray1.rx] = 'O';
+		else if (ray_in_map(&vars->ray1, inf)
+			&& inf->map[(int)vars->ray1.ry][(int)vars->ray1.rx] == 'O')
+			inf->map[(int)vars->ray1.ry][(int)vars->ray1.rx] = 'C';
+	}
+}
+
+void	toggle_door(struct mlx_key_data key_data, void *param)
 {
 	t_draw_col_vars	vars;
 	t_info			*inf;
@@ -28,24 +48,7 @@ void	toogle_door(struct mlx_key_data key_data, void *param)
 		vars.vlen = vray_len_door(inf, vars.angle, &vars.ray1);
 		vars.hlen = hray_len_door(inf, vars.angle, &vars.ray2);
 		vars.ray_len = ft_min(vars.vlen, vars.hlen);
-		if (vars.ray_len == vars.hlen)
-		{
-			if (ray_in_map(&vars.ray2, inf)
-				&& inf->map[(int)vars.ray2.ry][(int)vars.ray2.rx] == 'C')
-				inf->map[(int)vars.ray2.ry][(int)vars.ray2.rx] = 'O';
-			else if (ray_in_map(&vars.ray2, inf)
-					&& inf->map[(int)vars.ray2.ry][(int)vars.ray2.rx] == 'O')
-					inf->map[(int)vars.ray2.ry][(int)vars.ray2.rx] = 'C';
-		}
-		else
-		{
-			if (ray_in_map(&vars.ray1, inf)
-				&& inf->map[(int)vars.ray1.ry][(int)vars.ray1.rx] == 'C')
-				inf->map[(int)vars.ray1.ry][(int)vars.ray1.rx] = 'O';
-			else if (ray_in_map(&vars.ray1, inf)
-					&& inf->map[(int)vars.ray1.ry][(int)vars.ray1.rx] == 'O')
-					inf->map[(int)vars.ray1.ry][(int)vars.ray1.rx] = 'C';
-		}
+		toggle(&vars, inf);
 	}
 }
 

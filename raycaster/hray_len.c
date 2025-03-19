@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hray_len.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:22:43 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/18 20:37:52 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/19 02:10:13 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ double	hray_len(t_info *inf, double angle, t_ray *ray)
 	while (i < DOF)
 	{
 		if (ray_in_map(ray, inf) && (inf->map[(int)ray->ry][(int)ray->rx] == '1'
-				|| inf->map[(int)ray->ry][(int)ray->rx] == 'C'))
+			|| inf->map[(int)ray->ry][(int)ray->rx] == 'C'))
 			return (sqrt(pow(inf->player.y - ray->ry, 2) + pow(inf->player.x
 						- ray->rx, 2)));
 		ray->ry += ray->yo;

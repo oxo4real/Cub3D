@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 05:35:54 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/18 22:07:14 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/19 02:15:28 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCASTER_H
 # define RAYCASTER_H
-#include "MLX42.h"
+# include "MLX42.h"
 # include "types.h"
 # include "utils.h"
 
@@ -32,7 +32,7 @@ void	animation_handler(void *param);
 bool	load_animation_textures(t_anim *anim);
 bool	load_animation_images(t_anim *anim);
 void	free_animation(t_anim *anim);
-void	toogle_door(struct mlx_key_data key, void *param);
+void	toggle_door(struct mlx_key_data key, void *param);
 double	hray_len_door(t_info *inf, double angle, t_ray *ray);
 double	vray_len_door(t_info *inf, double angle, t_ray *ray);
 

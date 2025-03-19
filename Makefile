@@ -16,7 +16,8 @@ UTILS = ft_calloc.c ft_memcpy.c ft_split.c ft_strjoin.c ft_strlen.c ft_memset.c 
 		ft_lstdelone.c ft_lstnew.c trimmify.c free_info.c textures.c
 
 RAYCASTER = raycast.c draw_col.c hray_len.c vray_len.c events.c hook_events.c minimap.c \
-			ft_move.c animation.c animation_utils.c animation_handler.c free_animation.c toogle_door.c hray_len_door.c vray_len_door.c
+			ft_move.c animation.c animation_utils.c animation_handler.c free_animation.c \
+			toggle_door.c hray_len_door.c vray_len_door.c
 
 SRCS += $(addprefix parser/, $(PARSER))
 SRCS += $(addprefix utils/, $(UTILS))
