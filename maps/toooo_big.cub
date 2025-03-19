@@ -1,14 +1,7 @@
-NO ./textures/bg.png
+NO ./textures/bg1.png
 SO ./textures/bg2.png
-
-
-
 WE ./textures/bg3.png
-
-
-
-
-EA         ./textures/bg4.png
+EA ./textures/bg4.png
 F 0,0, 0
 C 255,255,255
 
