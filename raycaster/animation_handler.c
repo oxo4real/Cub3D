@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 21:43:34 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/18 22:14:32 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/19 01:10:50 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,34 +31,34 @@ static void	anim_handler_move(t_anim *anim)
 	else if (anim->stat == AIMING)
 	{
 		anim->stat = BACK_AIMING;
-		anim->frame_aim = 11;
+		anim->frame_aim = 3;
 	}
 }
 
 static void	anim_shoot(t_anim *anim)
 {
 	anim->prev = anim->i_fire[anim->frame_fire];
-	if (anim->frame_fire + 2 >= 13)
+	if (anim->frame_fire + 1 >= 6)
 		anim->stat = IDLE;
-	anim->frame_fire = (anim->frame_fire + 2) % 13;
+	anim->frame_fire = (anim->frame_fire + 1) % 6;
 	anim->cross->enabled = 1;
 }
 
 static void	anim_shoot_aim(t_anim *anim)
 {
 	anim->prev = anim->i_aim_fire[anim->frame_aim_fire];
-	if (anim->frame_aim_fire + 2 >= 13)
+	if (anim->frame_aim_fire + 1 >= 6)
 		anim->stat = AIMING;
-	anim->frame_aim_fire = (anim->frame_aim_fire + 2) % 13;
+	anim->frame_aim_fire = (anim->frame_aim_fire + 1) % 6;
 }
 
 static void	anim_aim(t_anim *anim)
 {
 	anim->prev = anim->i_aim[anim->frame_aim];
-	if (anim->stat == AIMING && anim->frame_aim + 2 < 11)
-		anim->frame_aim = (anim->frame_aim + 2) % 11;
+	if (anim->stat == AIMING && anim->frame_aim + 1 < 4)
+		anim->frame_aim = (anim->frame_aim + 1) % 4;
 	else if (anim->stat == BACK_AIMING)
-		anim->frame_aim -= 2;
+		anim->frame_aim -= 1;
 	if (anim->frame_aim < 0)
 	{
 		anim->stat = IDLE;

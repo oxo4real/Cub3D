@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 02:25:52 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/18 22:12:49 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/19 01:13:45 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static bool	load_anim_text_helper(t_anim *anim)
 	int		i;
 
 	i = 1;
-	while (i <= 13)
+	while (i <= 6)
 	{
 		snprintf(buff, sizeof(buff), "./textures/FIRE/hk53_fire.%d.png", i);
 		anim->t_fire[i - 1] = mlx_load_png(buff);
@@ -28,7 +28,7 @@ static bool	load_anim_text_helper(t_anim *anim)
 		anim->t_aim_fire[i - 1] = mlx_load_png(buff);
 		if (!anim->t_aim_fire[i - 1])
 			return (1);
-		if (i <= 11)
+		if (i <= 4)
 		{
 			snprintf(buff, sizeof(buff), "./textures/AIM/hk53_aim.%d.png", i);
 			anim->t_aim[i - 1] = mlx_load_png(buff);
@@ -58,7 +58,7 @@ static bool	load_animation_images_(t_anim *anim)
 	int	i;
 
 	i = 0;
-	while (i < 13)
+	while (i < 6)
 	{
 		if (anim->t_fire[i])
 		{
@@ -70,7 +70,7 @@ static bool	load_animation_images_(t_anim *anim)
 			if (!anim->i_aim_fire[i])
 				return (1);
 		}
-		if (i < 11 && anim->t_aim[i])
+		if (i < 4 && anim->t_aim[i])
 		{
 			anim->i_aim[i] = mlx_texture_to_image(anim->mlx, anim->t_aim[i]);
 			if (!anim->i_aim[i])

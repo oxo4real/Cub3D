@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:12:42 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/18 22:14:22 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/19 01:07:51 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	free_animation_helper(t_anim *anim)
 	int	i;
 
 	i = 0;
-	while (i < 13)
+	while (i < 6)
 	{
 		if (anim->t_fire[i])
 			mlx_delete_texture(anim->t_fire[i]);
@@ -27,7 +27,7 @@ static void	free_animation_helper(t_anim *anim)
 			mlx_delete_texture(anim->t_aim_fire[i]);
 		if (anim->i_aim_fire[i])
 			mlx_delete_image(anim->mlx, anim->i_aim_fire[i]);
-		if (i < 11)
+		if (i < 4)
 		{
 			if (anim->t_aim[i])
 				mlx_delete_texture(anim->t_aim[i]);

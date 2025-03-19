@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 02:25:13 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/18 22:05:36 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/19 01:08:31 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static void	draw_animation_elements(t_anim *anim)
 	int	i;
 
 	i = 0;
-	while (i < 13)
+	while (i < 6)
 	{
 		if (anim->i_fire[i])
 			draw_n_hide(anim, anim->i_fire[i]);
 		if (anim->i_aim_fire[i])
 			draw_n_hide(anim, anim->i_aim_fire[i]);
-		if (i < 11 && anim->i_aim[i])
+		if (i < 4 && anim->i_aim[i])
 			draw_n_hide(anim, anim->i_aim[i]);
 		i++;
 	}
