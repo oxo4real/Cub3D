@@ -6,7 +6,7 @@
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 20:49:05 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/19 02:35:45 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/19 05:03:50 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	raise(t_error error)
 
 void	p_error(char *msg, char *details)
 {
-	ft_putendl_fd("ERROR", 2);
+	ft_putendl_fd("Error", 2);
 	if (!*details)
 		perror(msg);
 	else
