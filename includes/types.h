@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 05:38:44 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/19 01:06:29 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/19 01:27:39 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_info
 {
 	char			*data[6];
 	mlx_texture_t	*t[4];
+	mlx_texture_t	*door;
 	char			**map;
 	mlx_t			*mlx;
 	mlx_image_t		*frame;

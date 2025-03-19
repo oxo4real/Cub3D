@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 06:27:14 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 06:29:14 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/19 01:29:10 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ bool	load_textures(t_info *inf)
 	inf->t[EA] = mlx_load_png(inf->data[EA]);
 	if (!inf->t[EA])
 		return (1);
+	inf->door = mlx_load_png("./textures/door.png");
+	if (!inf->door)
+		return (1);
 	return (0);
 }
 
@@ -40,4 +43,6 @@ void	unload_textures(t_info *inf)
 			mlx_delete_texture(inf->t[i]);
 		i++;
 	}
+	if (inf->door)
+		mlx_delete_texture(inf->door);
 }

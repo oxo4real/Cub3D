@@ -6,7 +6,7 @@
 /*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:25:10 by aaghzal           #+#    #+#             */
-/*   Updated: 2025/03/18 22:10:41 by aaghzal          ###   ########.fr       */
+/*   Updated: 2025/03/19 01:35:27 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,10 @@ static unsigned int	gt_clr(t_ray *ray, t_info *inf, t_type dir, double factor_y)
 		factor_x = (fabs(fmod(ray->ry, 1)));
 	else
 		factor_x = 1 - (fabs(fmod(ray->ry, 1)));
-	texture = inf->t[dir];
+	if (inf->map[(int)ray->ry][(int)ray->rx] == '1')
+		texture = inf->t[dir];
+	else
+		texture = inf->door;
 	x = (unsigned int)(factor_x * texture->width) * texture->bytes_per_pixel;
 	y = (unsigned int)(texture->height * factor_y) * texture->bytes_per_pixel;
 	px = texture->pixels + y * texture->width + x;

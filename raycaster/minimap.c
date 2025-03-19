@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 05:05:07 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/17 06:19:08 by mhayyoun         ###   ########.fr       */
+/*   Updated: 2025/03/19 01:22:27 by aaghzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static uint32_t	map_the_map(t_info *inf, int x, int y)
 			return (0X6fd4edFF);
 		else if (map[y][x] == '1')
 			return (0X030061FF);
+		else if (map[y][x] == 'C' || map[y][x] == 'O')
+			return (0XAA0000FF);
 	}
 	return (0X777777FF);
 }
