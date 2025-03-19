@@ -12,8 +12,8 @@ UTILS = ft_calloc.c ft_memcpy.c ft_split.c ft_strjoin.c ft_strlen.c ft_memset.c 
 		print_error.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_atou.c \
 		ft_strtrim_end.c ft_trimmed_len.c str_empty.c ft_isunint8.c ft_strsjoin.c \
 		get_rgb.c ato_color.c get_direction.c ft_isdirection.c lst_to_array.c \
-		ft_lstadd_back_bonus.c ft_min.c skip_space.c ft_lstclear_bonus.c ft_arr_len.c \
-		ft_lstdelone_bonus.c ft_lstnew_bonus.c trimmify.c free_info.c textures.c
+		ft_lstadd_back.c ft_min.c skip_space.c ft_lstclear.c ft_arr_len.c \
+		ft_lstdelone.c ft_lstnew.c trimmify.c free_info.c textures.c
 
 RAYCASTER = raycast.c draw_col.c hray_len.c vray_len.c events.c hook_events.c minimap.c \
 			ft_move.c animation.c animation_utils.c animation_handler.c free_animation.c toogle_door.c hray_len_door.c vray_len_door.c

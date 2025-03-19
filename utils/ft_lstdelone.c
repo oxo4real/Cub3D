@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   ft_lstdelone.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhayyoun <mhayyoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/28 12:14:16 by mhayyoun          #+#    #+#             */
-/*   Updated: 2025/03/15 02:20:29 by mhayyoun         ###   ########.fr       */
+/*   Created: 2024/07/28 12:24:43 by mhayyoun          #+#    #+#             */
+/*   Updated: 2025/03/15 02:20:40 by mhayyoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	ft_lstadd_back(t_head *head, t_list *new_node)
+void	ft_lstdelone(t_list *lst)
 {
-	t_list	*last;
-
-	if (!head || !new_node)
-		return ;
-	if (!head->head)
-		head->head = new_node;
-	else
+	if (lst)
 	{
-		last = head->last;
-		last->next = new_node;
+		free(lst->line);
+		free(lst);
 	}
-	head->size++;
-	head->last = new_node;
 }
