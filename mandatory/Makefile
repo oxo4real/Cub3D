@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Werror -Wextra -Wall
+CFLAGS = -Werror -Wextra -Wall -O3
 SRCS = main.c
 
 PARSER = get_next_line.c get_next_line_utils.c parser.c valid_map.c has_ext.c \
